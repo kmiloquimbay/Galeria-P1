@@ -1,5 +1,6 @@
 package galeria.inventarioYpiezas;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Inventario {
@@ -7,10 +8,10 @@ public class Inventario {
     private List<Pieza> piezasEnBodega;
     private List<Pieza> piezasPasadas;
 
-    public Inventario(List<Pieza> piezasEnExhibicion, List<Pieza> piezasEnBodega, List<Pieza> piezasPasadas) {
-        this.piezasEnExhibicion = piezasEnExhibicion;
-        this.piezasEnBodega = piezasEnBodega;
-        this.piezasPasadas = piezasPasadas;
+    public Inventario() {
+        this.piezasEnExhibicion = new LinkedList<Pieza>( );
+        this.piezasEnBodega = new LinkedList<Pieza>( );
+        this.piezasPasadas = new LinkedList<Pieza>( );
     }
 
     public List<Pieza> getPiezasEnExhibicion() {
