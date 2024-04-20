@@ -7,11 +7,13 @@ public class Inventario {
     private List<Pieza> piezasEnExhibicion;
     private List<Pieza> piezasEnBodega;
     private List<Pieza> piezasPasadas;
+    private List<Pieza> piezasDisponibleVenta;
 
     public Inventario() {
         this.piezasEnExhibicion = new LinkedList<Pieza>( );
         this.piezasEnBodega = new LinkedList<Pieza>( );
         this.piezasPasadas = new LinkedList<Pieza>( );
+        this.piezasDisponibleVenta = new LinkedList<Pieza>( );
     }
 
     public List<Pieza> getPiezasEnExhibicion() {
@@ -36,6 +38,14 @@ public class Inventario {
 
     public void setPiezasPasadas(List<Pieza> piezasPasadas) {
         this.piezasPasadas = piezasPasadas;
+    }
+
+    public List<Pieza> getPiezasDisponibleVenta() {
+        return piezasDisponibleVenta;
+    }
+
+    public void setPiezasDisponibleVenta(List<Pieza> piezasDisponibleVenta) {
+        this.piezasDisponibleVenta = piezasDisponibleVenta;
     }
 
     public void guardarEnBodega(Pieza pieza){

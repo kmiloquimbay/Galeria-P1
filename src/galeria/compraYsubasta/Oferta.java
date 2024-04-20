@@ -10,4 +10,7 @@ public class Oferta {
         this.valorOferta=valorOferta;
         this.comprador=comprador;
     }
+    public int getValorOferta() {
+        return valorOferta;
+    }
 }

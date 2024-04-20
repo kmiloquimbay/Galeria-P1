@@ -41,7 +41,7 @@ public class ControladorUsuarios {
     }
 
     public Comprador crearComprador(String login, String password, String nombre, String telefono, int limiteCompras){
-        Comprador comprador = new Comprador(login, password, nombre, telefono, limiteCompras);
+        Comprador comprador = new Comprador(login, password, nombre, telefono, limiteCompras, this.galeria.getInventario().getPiezasDisponibleVenta());
         mapaClientes.put(Usuario.obtenerNuevoId(), comprador);
         return comprador;
     }
