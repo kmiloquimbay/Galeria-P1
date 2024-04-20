@@ -8,6 +8,7 @@ import galeria.inventarioYpiezas.Escultura;
 import galeria.inventarioYpiezas.Fotografia;
 import galeria.inventarioYpiezas.Pieza;
 import galeria.inventarioYpiezas.Pintura;
+import galeria.inventarioYpiezas.Video;
 
 public class ConsolaUsuarios {
     
@@ -15,8 +16,9 @@ public class ConsolaUsuarios {
     Autor autor1= new Autor("Leonardo da Vinci", false);
     List<Autor> autores1= new LinkedList<Autor>();
     Pintura pintura1=new Pintura("Mona Lisa", autores1, 1506, "Italia","20-10-2024", true, false, 77, 53, "Oleo");
-    Fotografia foto1= new Fotografia("La niña y el buitre", autores1, 1993, "Sudán","20-10-2024", true, false, "10", "200");
-    //Fotografia foto1= new Fotografia("La niña y el buitre", autores1, 1993, "Sudán", "20-10-2024", true, false, "10", "200")
+    Fotografia foto1= new Fotografia("La niña y el buitre", autores1, 1993, "Sudán","20-03-2024", true, false, "10", "200");
+    Video video1= new Video("La Vie", autores1, 1983, "Francia","14-11-2024", true, false, "40", "200");
+    
     // COMPRADOR
     public static void menuComprador() {
         System.out.println("\n--- Menú Comprador ---");
