@@ -7,8 +7,8 @@ public class Fotografia extends Pieza{
     private String resolucion;
     private String tamanio;
 
-    public Fotografia(String titulo, List<Autor> autores, String anioCreacion, String lugarCreacion, String fechaDevolucion, boolean disponibleVentaValorFijo, boolean bloqueada, String resolucion, String tamanio) {
-        super(titulo, autores, anioCreacion, lugarCreacion, fechaDevolucion, disponibleVentaValorFijo, bloqueada);
+    public Fotografia(String titulo, int anioCreacion, String lugarCreacion, String fechaDevolucion, boolean disponibleVentaValorFijo, boolean bloqueada, String resolucion, String tamanio) {
+        super(titulo, anioCreacion, lugarCreacion, fechaDevolucion, disponibleVentaValorFijo, bloqueada);
         this.resolucion = resolucion;
         this.tamanio = tamanio;
     }

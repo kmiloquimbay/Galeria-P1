@@ -1,5 +1,6 @@
 package galeria.inventarioYpiezas;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public abstract class Pieza {
@@ -11,9 +12,9 @@ public abstract class Pieza {
     private boolean disponibleVentaValorFijo;
     private boolean bloqueada;
 
-    public Pieza(String titulo, List<Autor> autores, int anioCreacion, String lugarCreacion, String fechaDevolucion, boolean disponibleVentaValorFijo, boolean bloqueada) {
+    public Pieza(String titulo, int anioCreacion, String lugarCreacion, String fechaDevolucion, boolean disponibleVentaValorFijo, boolean bloqueada) {
         this.titulo = titulo;
-        this.autores = autores;
+        this.autores = new LinkedList<Autor>( );
         this.anioCreacion = anioCreacion;
         this.lugarCreacion = lugarCreacion;
         this.fechaDevolucion = fechaDevolucion;
@@ -77,5 +78,7 @@ public abstract class Pieza {
         this.bloqueada = bloqueada;
     }
 
-
+    public void agregarAutor(Autor autor) {
+        autores.add(autor);
+    }
 }
