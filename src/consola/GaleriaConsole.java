@@ -47,8 +47,8 @@ public class GaleriaConsole {
 
     private static void ingresarComoUsuario(Scanner scanner) {
         int opcionIngresarUsuario;
-
-        System.out.println("\n--- ¿Cómo que tipo de usuario desea ingresar? ---");
+    
+        System.out.println("\n--- ¿Cómo que tipo de usuario desea ingresar?---");
         System.out.println("1. Comprador");
         System.out.println("2. Propietario");
         System.out.println("3. Administrador de Galería");
@@ -57,27 +57,27 @@ public class GaleriaConsole {
         System.out.println("0. Volver al Menú Principal");
         System.out.print("Seleccione cómo desea ingresar: ");
         opcionIngresarUsuario = scanner.nextInt();
-
+    
         switch (opcionIngresarUsuario) {
             case 1:
-                System.out.println("Ingresando como Comprador...");
-                // Lógica para ingresar como comprador
+                ConsolaUsuarios.menuComprador();
+                // Agrega aquí la lógica para el menú del comprador
                 break;
             case 2:
-                System.out.println("Ingresando como Propietario...");
-                // Lógica para ingresar como propietario
+                ConsolaUsuarios.menuPropietario();
+                // Agrega aquí la lógica para el menú del propietario
                 break;
             case 3:
-                System.out.println("Ingresando como Administrador de Galería...");
-                // Lógica para ingresar como administrador de galería
+                ConsolaUsuarios.menuAdministradorGaleria();
+                // Agrega aquí la lógica para el menú del administrador de galería
                 break;
             case 4:
-                System.out.println("Ingresando como Operador de Subastas...");
-                // Lógica para ingresar como operador de subastas
+                ConsolaUsuarios.menuOperadorSubastas();
+                // Agrega aquí la lógica para el menú del operador de subastas
                 break;
             case 5:
-                System.out.println("Ingresando como Cajero...");
-                // Lógica para ingresar como cajero
+                ConsolaUsuarios.menuCajero();
+                // Agrega aquí la lógica para el menú del cajero
                 break;
             case 0:
                 System.out.println("Volviendo al Menú Principal...");
