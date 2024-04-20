@@ -30,7 +30,7 @@ public class Usuario {
     }
 
     // Método para obtener un nuevo ID para el usuario
-    protected static int obtenerNuevoId() {
+    public static int obtenerNuevoId() {
         return contadorIds++;
     }
 }
