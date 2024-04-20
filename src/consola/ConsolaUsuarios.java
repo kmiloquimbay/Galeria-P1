@@ -4,17 +4,19 @@ import java.util.List;
 import java.util.Scanner;
 
 import galeria.inventarioYpiezas.Autor;
+import galeria.inventarioYpiezas.Escultura;
+import galeria.inventarioYpiezas.Fotografia;
 import galeria.inventarioYpiezas.Pieza;
 import galeria.inventarioYpiezas.Pintura;
 
 public class ConsolaUsuarios {
     
-    //Setup
+    //Setup para mostrar el funcionamiento de los reqs
     Autor autor1= new Autor("Leonardo da Vinci", false);
     List<Autor> autores1= new LinkedList<Autor>();
-    
-    Pintura pintura1=new Pintura("Mona Lisa", autores1, "1506", "Italia","20-10-2024", true, false, 77, 53, "Oleo");
-
+    Pintura pintura1=new Pintura("Mona Lisa", autores1, 1506, "Italia","20-10-2024", true, false, 77, 53, "Oleo");
+    Fotografia foto1= new Fotografia("La niña y el buitre", autores1, 1993, "Sudán","20-10-2024", true, false, "10", "200");
+    //Fotografia foto1= new Fotografia("La niña y el buitre", autores1, 1993, "Sudán", "20-10-2024", true, false, "10", "200")
     // COMPRADOR
     public static void menuComprador() {
         System.out.println("\n--- Menú Comprador ---");

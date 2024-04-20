@@ -5,13 +5,13 @@ import java.util.List;
 public abstract class Pieza {
     private String titulo;
     private List<Autor> autores;
-    private String anioCreacion;
+    private int anioCreacion;
     private String lugarCreacion;
     private String fechaDevolucion;
     private boolean disponibleVentaValorFijo;
     private boolean bloqueada;
 
-    public Pieza(String titulo, List<Autor> autores, String anioCreacion, String lugarCreacion, String fechaDevolucion, boolean disponibleVentaValorFijo, boolean bloqueada) {
+    public Pieza(String titulo, List<Autor> autores, int anioCreacion, String lugarCreacion, String fechaDevolucion, boolean disponibleVentaValorFijo, boolean bloqueada) {
         this.titulo = titulo;
         this.autores = autores;
         this.anioCreacion = anioCreacion;
@@ -37,11 +37,11 @@ public abstract class Pieza {
         this.autores = autores;
     }
 
-    public String getAnioCreacion() {
+    public int getAnioCreacion() {
         return anioCreacion;
     }
 
-    public void setAnioCreacion(String anioCreacion) {
+    public void setAnioCreacion(int anioCreacion) {
         this.anioCreacion = anioCreacion;
     }
 
