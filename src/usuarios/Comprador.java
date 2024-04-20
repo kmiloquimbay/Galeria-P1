@@ -6,8 +6,8 @@ import galeria.inventarioYpiezas.Pieza;
 public class Comprador extends Cliente {
     private int limiteCompras;
     private List<Pieza> piezasDisponiblesVenta;
-    public Comprador(String login, String password, String nombre, String telefono, int limiteCompras, List<Pieza> piezasDisponiblesVenta){
-        super(login, password, nombre, telefono);
+    public Comprador(String login, String password, String nombre, String telefono, int limiteCompras, List<Pieza> piezasDisponiblesVenta, String id){
+        super(login, password, nombre, telefono, id);
         this.limiteCompras = limiteCompras;
         this.piezasDisponiblesVenta = piezasDisponiblesVenta;
     }

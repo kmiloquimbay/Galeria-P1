@@ -8,8 +8,8 @@ public class Propietario extends Cliente{
     private List<Pieza> misPiezasActuales; 
     private List<Pieza> misPiezasPasadas;
 
-    public Propietario(String login, String password, String nombre, String telefono){
-        super(login, password, nombre, telefono);
+    public Propietario(String login, String password, String nombre, String telefono, String id){
+        super(login, password, nombre, telefono,id);
         misPiezasActuales = new LinkedList<Pieza>( );
         misPiezasPasadas = new LinkedList<Pieza>( );
 

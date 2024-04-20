@@ -2,11 +2,13 @@ package usuarios;
 
 public class Empleado extends Usuario {
     private String rol;
+    private String id;
 
     // Constructor de Empleado
-    public Empleado(String login, String password, String rol) {
+    public Empleado(String login, String password, String rol, String id) {
         super(login, password);
         this.rol = rol;
+        this.id = id;
     }
 
     // Getters y setters
