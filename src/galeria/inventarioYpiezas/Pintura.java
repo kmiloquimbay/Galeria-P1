@@ -1,4 +1,4 @@
-package galeria;
+package galeria.inventarioYpiezas;
 
 import java.util.List;
 

@@ -2,6 +2,9 @@ package galeria;
 
 import java.util.Map;
 
+import galeria.compraYsubasta.Compra;
+import galeria.compraYsubasta.Subasta;
+import galeria.inventarioYpiezas.Inventario;
 import usuarios.ControladorUsuarios;
 
 public class Galeria {

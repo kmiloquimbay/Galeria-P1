@@ -3,9 +3,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-import galeria.Inventario.Autor;
-import galeria.Inventario.Pieza;
-import galeria.Inventario.Pintura;
+import galeria.inventarioYpiezas.Autor;
+import galeria.inventarioYpiezas.Pieza;
+import galeria.inventarioYpiezas.Pintura;
 
 public class ConsolaUsuarios {
     

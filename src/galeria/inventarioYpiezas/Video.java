@@ -1,4 +1,4 @@
-package galeria.Inventario;
+package galeria.inventarioYpiezas;
 import java.util.List;
 
 public class Video extends Pieza{

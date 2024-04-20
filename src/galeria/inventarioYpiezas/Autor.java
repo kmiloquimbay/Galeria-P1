@@ -1,4 +1,4 @@
-package galeria;
+package galeria.inventarioYpiezas;
 
 public class Autor {
     private String nombre;
