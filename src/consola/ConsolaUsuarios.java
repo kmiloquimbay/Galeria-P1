@@ -1,8 +1,21 @@
 package consola;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
-public class ConsolaUsuarios {
+import galeria.Inventario.Autor;
+import galeria.Inventario.Pieza;
+import galeria.Inventario.Pintura;
 
+public class ConsolaUsuarios {
+    
+    //Setup
+    Autor autor1= new Autor("Leonardo da Vinci", false);
+    List<Autor> autores1= new LinkedList<Autor>();
+    
+    Pintura pintura1=new Pintura("Mona Lisa", autores1, "1506", "Italia","20-10-2024", true, false, 77, 53, "Oleo");
+
+    // COMPRADOR
     public static void menuComprador() {
         System.out.println("\n--- Menú Comprador ---");
         System.out.println("1. Ver catálogo de obras");
@@ -14,6 +27,8 @@ public class ConsolaUsuarios {
         // Agrega aquí la lógica para las opciones del menú del comprador
     }
 
+
+    // PROPIETARIO
     public static void menuPropietario() {
         System.out.println("\n--- Menú Propietario ---");
         System.out.println("1. Ver obras en mi galería");
