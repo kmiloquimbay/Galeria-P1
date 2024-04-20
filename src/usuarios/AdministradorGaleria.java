@@ -1,8 +1,12 @@
 package usuarios;
 
+import galeria.Galeria;
+
 public class AdministradorGaleria extends Empleado{
-    public AdministradorGaleria(String login, String password, String rol){
+    public Galeria galeria;
+    public AdministradorGaleria(String login, String password, String rol, Galeria galeria){
         super(login, password, rol);
+        this.galeria=galeria;
     }
     public void registrarIngresoPieza(){
         // Registra el ingreso de una pieza

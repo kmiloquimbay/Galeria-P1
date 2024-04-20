@@ -3,21 +3,29 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import galeria.Galeria;
 import galeria.inventarioYpiezas.Autor;
 import galeria.inventarioYpiezas.Escultura;
 import galeria.inventarioYpiezas.Fotografia;
+import galeria.inventarioYpiezas.Inventario;
 import galeria.inventarioYpiezas.Pieza;
 import galeria.inventarioYpiezas.Pintura;
 import galeria.inventarioYpiezas.Video;
+import usuarios.ControladorUsuarios;
 
 public class ConsolaUsuarios {
     
     //Setup para mostrar el funcionamiento de los reqs
+    
     Autor autor1= new Autor("Leonardo da Vinci", false);
-    List<Autor> autores1= new LinkedList<Autor>();
-    Pintura pintura1=new Pintura("Mona Lisa", autores1, 1506, "Italia","20-10-2024", true, false, 77, 53, "Oleo");
-    Fotografia foto1= new Fotografia("La niña y el buitre", autores1, 1993, "Sudán","20-03-2024", true, false, "10", "200");
-    Video video1= new Video("La Vie", autores1, 1983, "Francia","14-11-2024", true, false, "40", "200");
+
+    Pintura pintura1=new Pintura("Mona Lisa", 1506, "Italia","20-10-2024", true, false, 77, 53, "Oleo");
+    Fotografia foto1= new Fotografia("La niña y el buitre", 1993, "Sudán","20-03-2024", true, false, "10", "200");
+    Video video1= new Video("La Vie", 1983, "Francia","14-11-2024", true, false, "40", "200");
+    
+    Inventario inventario1= new Inventario();
+    ControladorUsuarios controlador= new ControladorUsuarios();
+    Galeria galeriaConsola = new Galeria(inventario1,controlador);
     
     // COMPRADOR
     public static void menuComprador() {

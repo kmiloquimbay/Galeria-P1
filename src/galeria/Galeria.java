@@ -1,5 +1,6 @@
 package galeria;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import galeria.compraYsubasta.Compra;
@@ -13,11 +14,11 @@ public class Galeria {
     private Map<String, Subasta> subastas;
     private Map<String, Compra> compras;
 
-    public Galeria(Inventario inventario, ControladorUsuarios controladorUsuarios, Map<String, Subasta> subastas, Map<String, Compra> compras) {
+    public Galeria(Inventario inventario, ControladorUsuarios controladorUsuarios) {
         this.inventario = inventario;
         this.controladorUsuarios = controladorUsuarios;
-        this.subastas = subastas;
-        this.compras = compras;
+        this.subastas = new HashMap<String, Subasta>( );
+        this.compras = new HashMap<String, Compra>( );
     }
 
     public Inventario getInventario() {

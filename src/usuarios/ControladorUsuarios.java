@@ -1,12 +1,26 @@
 package usuarios;
 
 import java.util.Map;
+
+import galeria.Galeria;
+
 import java.util.HashMap;
 
 public class ControladorUsuarios {
-    private static Map<Integer, Empleado> mapaEmpleados = new HashMap<>();
-    private static Map<Integer, Cliente> mapaClientes = new HashMap<>();
+    
+    private  Map<Integer, Empleado> mapaEmpleados;
+    private  Map<Integer, Cliente> mapaClientes ;
+    private Galeria galeria;
+    
+    public ControladorUsuarios(){
+        
+        mapaEmpleados = new HashMap<Integer, Empleado>();
+        mapaClientes = new HashMap<Integer, Cliente>();
+    }
 
+    public void setGaleria(Galeria galeria){
+        this.galeria=galeria;
+    }
     public OperadorSubasta crearOperador(String login, String password, String rol){
         OperadorSubasta operador = new OperadorSubasta(login, password, rol);
         mapaEmpleados.put(Usuario.obtenerNuevoId(), operador);
@@ -20,7 +34,7 @@ public class ControladorUsuarios {
     }
 
     public AdministradorGaleria crearAdmin(String login, String password, String rol){
-        AdministradorGaleria administrador = new AdministradorGaleria(login, password, rol);
+        AdministradorGaleria administrador = new AdministradorGaleria(login, password, rol, this.galeria);
         mapaEmpleados.put(Usuario.obtenerNuevoId(), administrador);
         return administrador;
     }
@@ -31,10 +45,10 @@ public class ControladorUsuarios {
         return comprador;
     }
 
-    public Cliente crearCliente(String login, String password, String nombre, String telefono){
-        Cliente cliente = new Cliente(login, password, nombre, telefono);
-        mapaClientes.put(Usuario.obtenerNuevoId(), cliente);
-        return cliente;
+    public Propietario crearPropietario(String login, String password, String nombre, String telefono){
+        Propietario propietario = new Propietario(login, password, nombre, telefono);
+        mapaClientes.put(Usuario.obtenerNuevoId(), propietario);
+        return propietario;
     }
 
 }
