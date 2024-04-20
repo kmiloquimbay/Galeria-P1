@@ -3,6 +3,7 @@ package usuarios;
 import java.util.Map;
 
 import galeria.Galeria;
+import galeria.inventarioYpiezas.Inventario;
 
 import java.util.HashMap;
 
@@ -22,13 +23,13 @@ public class ControladorUsuarios {
         this.galeria=galeria;
     }
     public OperadorSubasta crearOperador(String login, String password, String rol){
-        OperadorSubasta operador = new OperadorSubasta(login, password, rol);
+        OperadorSubasta operador = new OperadorSubasta(login, password, rol, this.galeria);
         mapaEmpleados.put(Usuario.obtenerNuevoId(), operador);
         return operador;
     }
     
     public Cajero crearCajero(String login, String password, String rol){
-        Cajero cajero = new Cajero(login, password, rol);
+        Cajero cajero = new Cajero(login, password, rol, this.galeria);
         mapaEmpleados.put(Usuario.obtenerNuevoId(), cajero);
         return cajero;
     }
