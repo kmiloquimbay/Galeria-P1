@@ -34,6 +34,10 @@ public class Propietario extends Cliente{
         misPiezasPasadas.add(pieza);
     }
 
+    public void agregarAPasadas(Pieza pieza){
+        misPiezasPasadas.add(pieza);
+    }
+
 
 
 

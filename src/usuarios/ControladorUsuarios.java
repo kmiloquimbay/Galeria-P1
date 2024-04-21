@@ -82,4 +82,30 @@ public class ControladorUsuarios {
 
         mapaEmpleados.put(empleado.getId(), empleado);
     }
+
+    public Map<String, Empleado> getMapaEmpleados(){
+        return mapaEmpleados;
+    }
+
+    public Map<String, Comprador> getMapaCompradores(){
+        return mapaCompradores;
+    }
+
+    public Map<String, Propietario> getMapaPropietarios(){
+        return mapaPropietarios;
+    }
+
+    public void setMapaEmpleados(Map<String, Empleado> mapaEmpleados){
+        this.mapaEmpleados = mapaEmpleados;
+    }
+
+    public void setMapaCompradores(Map<String, Comprador> mapaCompradores){
+        this.mapaCompradores = mapaCompradores;
+    }
+
+    public void setMapaPropietarios(Map<String, Propietario> mapaPropietarios){
+        this.mapaPropietarios = mapaPropietarios;
+    }
+
+
 }

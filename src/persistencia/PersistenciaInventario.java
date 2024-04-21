@@ -46,7 +46,7 @@ public class PersistenciaInventario {
 
     }
 
-    public JSONObject guardarPieza(Pieza pieza){
+    public static JSONObject guardarPieza(Pieza pieza){
         JSONObject piezaJson = new JSONObject();
         piezaJson.put("titulo", pieza.getTitulo());
         piezaJson.put("anioCreacion", pieza.getAnioCreacion());
@@ -97,7 +97,7 @@ public class PersistenciaInventario {
         return autorJson;
     }
 
-    public void cargarInventario(Inventario inventario){
+    public static void cargarInventario(Inventario inventario){
         String jsonCompleto = new String(Files.readAllBytes(new File("inventario.json").toPath()));
         JSONObject inventarioJson = new JSONObject(jsonCompleto);
 
