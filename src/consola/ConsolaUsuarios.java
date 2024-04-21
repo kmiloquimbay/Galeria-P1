@@ -1,5 +1,6 @@
 package consola;
 
+import java.util.List;
 import java.util.Scanner;
 
 import galeria.Galeria;
@@ -8,6 +9,7 @@ import galeria.compraYsubasta.Subasta;
 import galeria.inventarioYpiezas.Autor;
 import galeria.inventarioYpiezas.Fotografia;
 import galeria.inventarioYpiezas.Inventario;
+import galeria.inventarioYpiezas.Pieza;
 import galeria.inventarioYpiezas.Pintura;
 import galeria.inventarioYpiezas.Video;
 import usuarios.AdministradorGaleria;
@@ -39,7 +41,8 @@ public class ConsolaUsuarios {
     //Subastas y Compras
     public static Oferta oferta1= new Oferta(20000, comprador);
     public static Oferta oferta2= new Oferta(40000, comprador);
-    public static Subasta subasta= new Subasta("6748899",39034,28904,video1);
+    public static Oferta ofertaRecibir= new Oferta(25000, comprador);
+    public static Subasta subasta1= new Subasta("6748899",39034,15000,video1);
 
     
     public static void setUp(){
@@ -54,37 +57,109 @@ public class ConsolaUsuarios {
         galeriaConsola.getControladorUsuarios().agregarEmpleado(admin);
         galeriaConsola.getControladorUsuarios().agregarEmpleado(cajero);
         galeriaConsola.getControladorUsuarios().agregarEmpleado(operador);
-        subasta.agregarOferta(oferta1);
-        subasta.agregarOferta(oferta2);
-        
+        subasta1.agregarOferta(oferta1);
+        subasta1.agregarOferta(oferta2);
+        galeriaConsola.agregarSubasta(subasta1);
+        propietario.agregarPieza(foto1);
+        propietario.agregarPieza(video1);
+        propietario.agregarPieza(pintura1);
+        propietario.pasarAPasadas(pintura1);
     }
 
 
     
     // COMPRADOR
     public static void menuComprador() {
-        System.out.println("\n--- Menú Comprador ---");
-        System.out.println("1. Ver catálogo de obras");
-        System.out.println("2. Participar en subasta");
-        System.out.println("3. Ver mis compras");
-        System.out.println("4. Ver estado de cuenta");
-        System.out.println("5. Salir");
-        System.out.print("Seleccione una acción: ");
-        // Agrega aquí la lógica para las opciones del menú del comprador
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        do {
+            System.out.println("\n--- Menú Comprador ---");
+            System.out.println("1. Ver historial de compras");
+            System.out.println("2. Realizar compra fija");
+            System.out.println("3. Salir");
+            System.out.print("Seleccione una acción: ");
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    verHistorialCompras();
+                    break;
+                case 2:
+                    // Lógica para realizar compra fija
+                    break;
+                case 3:
+                    System.out.println("Saliendo...");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
+                    break;
+            }
+        } while (opcion != 3);
+
+        scanner.close();
+    }
+
+    private static void verHistorialCompras() {
+        // Implementa el método para ver el historial de compras del comprador
+        System.out.println("Método verHistorialCompras no implementado.");
+    }
+
+    public List<String> realizarCompraFija(Pieza pieza) {
+        // Implementa el método para realizar una compra fija
+        System.out.println("Método realizarCompraFija no implementado.");
+        return null;
     }
 
 
     // PROPIETARIO
     public static void menuPropietario() {
-        System.out.println("\n--- Menú Propietario ---");
-        System.out.println("1. Ver obras en mi galería");
-        System.out.println("2. Agregar nueva obra");
-        System.out.println("3. Ver ventas");
-        System.out.println("4. Ver estado de cuenta");
-        System.out.println("5. Salir");
-        System.out.print("Seleccione una acción: ");
-        // Agrega aquí la lógica para las opciones del menú del propietario
+        Scanner scanner = new Scanner(System.in);
+        int opcion;
+
+        do {
+            System.out.println("\n--- Menú Propietario ---");
+            System.out.println("1. Ver mis piezas actuales");
+            System.out.println("2. Ver mis piezas pasadas");
+            System.out.println("3. Salir");
+            System.out.print("Seleccione una acción: ");
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    verMisPiezasActuales();
+                    break;
+                case 2:
+                    verMisPiezasPasadas();
+                    break;
+                // Agrega aquí la lógica para las opciones restantes del menú del propietario
+                default:
+                    System.out.println("Opción inválida. Por favor, seleccione una opción válida.");
+                    break;
+            }
+        } while (opcion != 3);
+
+        scanner.close();
     }
+
+    private static void verMisPiezasActuales() {
+        List<Pieza> piezasActuales=propietario.getMisPiezasActuales();
+        System.out.println("Tus piezas actuales son:");
+        for (Pieza pieza : piezasActuales) {
+            System.out.println(pieza.getTitulo()); 
+        }
+            
+        }
+
+
+    private static void verMisPiezasPasadas()  {
+        List<Pieza> piezasPasadas=propietario.getMisPiezasPasadas();
+        System.out.println("Tus piezas pasadas son:");
+        for (Pieza pieza : piezasPasadas) {
+            System.out.println(pieza.getTitulo()); 
+        }
+            
+        }
 
 
     // ADMINISTRADOR DE GALERIA
@@ -248,18 +323,25 @@ public class ConsolaUsuarios {
     }
 
     private static void terminarSubasta() {
-        // Implementa el método terminarSubasta
-        System.out.println("Método terminarSubasta no implementado.");
+        setUp();
+        operador.terminarSubasta("6748899");
+        
+        
     }
 
     private static void recibirRegistrarOferta() {
-        // Implementa el método recibirRegistrarOferta
-        System.out.println("Método recibirRegistrarOferta no implementado.");
+        setUp();
+        operador.recibirRegistrarOferta(ofertaRecibir,"6748899");
     }
 
     private static void evaluarOferta() {
-        // Implementa el método evaluarOferta
-        System.out.println("Método evaluarOferta no implementado.");
+        setUp();
+        if (operador.evaluarOferta(ofertaRecibir,"6748899")==true){
+            System.out.println("La oferta es correcta pues supera el valor inicial de la subasta");
+        }
+        else{
+            System.out.println("La oferta no es correcta pues no supera el valor inicial de la subasta");
+        }
     }
 
 
