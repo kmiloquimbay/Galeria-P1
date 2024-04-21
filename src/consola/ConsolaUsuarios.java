@@ -1,31 +1,54 @@
 package consola;
-import java.util.LinkedList;
-import java.util.List;
+
 import java.util.Scanner;
 
 import galeria.Galeria;
+
 import galeria.inventarioYpiezas.Autor;
-import galeria.inventarioYpiezas.Escultura;
 import galeria.inventarioYpiezas.Fotografia;
 import galeria.inventarioYpiezas.Inventario;
-import galeria.inventarioYpiezas.Pieza;
 import galeria.inventarioYpiezas.Pintura;
 import galeria.inventarioYpiezas.Video;
+import usuarios.AdministradorGaleria;
+import usuarios.Cajero;
+import usuarios.Comprador;
 import usuarios.ControladorUsuarios;
+import usuarios.OperadorSubasta;
+import usuarios.Propietario;
 
 public class ConsolaUsuarios {
     
     //Setup para mostrar el funcionamiento de los reqs
     
-    Autor autor1= new Autor("Leonardo da Vinci", false);
-
-    Pintura pintura1=new Pintura("Mona Lisa", 1506, "Italia","20-10-2024", true, false, 77, 53, "Oleo");
-    Fotografia foto1= new Fotografia("La niña y el buitre", 1993, "Sudán","20-03-2024", true, false, "10", "200");
-    Video video1= new Video("La Vie", 1983, "Francia","14-11-2024", true, false, "40", "200");
+    public static Autor autor1= new Autor("Leonardo da Vinci", false);
+    public static Fotografia foto1= new Fotografia("La niña y el buitre", 1993, "Sudán","20-03-2024", true, false, "10", "200");
+    public static Video video1= new Video("La Vie", 1983, "Francia","14-11-2024", true, false, "40", "200");
+    public static Pintura pintura1=new Pintura("La Flor", 1964, "Italia","20-12-2025", true, true, 77, 53, "Oleo");
+    public static Inventario inventario1= new Inventario();
+    public static ControladorUsuarios controlador= new ControladorUsuarios();
+    public static Galeria galeriaConsola = new Galeria(inventario1,controlador);
+    public static Pintura pinturaAgregar=new Pintura("Mona Lisa", 1506, "Italia","20-10-2024", true, false, 77, 53, "Oleo");
     
-    Inventario inventario1= new Inventario();
-    ControladorUsuarios controlador= new ControladorUsuarios();
-    Galeria galeriaConsola = new Galeria(inventario1,controlador);
+    public static Comprador comprador= new Comprador("LuisP", "12345", "Luis","3456289290", 1000000,galeriaConsola.getInventario().getPiezasDisponibleVenta(), "547293");
+    public static Propietario propietario= new Propietario("santiH", "63248", "Santiago", "456783672","547902");
+    public static AdministradorGaleria admin= new AdministradorGaleria("fabio24", "1226745", "Admin",galeriaConsola, "562901");
+    public static Cajero cajero= new  Cajero("juanito2", "762598", "Cajero",galeriaConsola, "4439035");
+    public static OperadorSubasta operador= new OperadorSubasta("andresP", "12235345", "Operador",galeriaConsola, "653907");
+    
+    public static void setUp(){
+        galeriaConsola.getInventario().guardarEnBodega(foto1);
+        galeriaConsola.getInventario().guardarEnBodega(video1);
+        galeriaConsola.getInventario().guardarEnBodega(pintura1);
+        galeriaConsola.getInventario().ponerEnDisponibles(foto1);
+        galeriaConsola.getInventario().ponerEnDisponibles(video1);
+        galeriaConsola.getInventario().ponerEnDisponibles(pintura1);
+        galeriaConsola.getControladorUsuarios().agregarComprador(comprador);
+        galeriaConsola.getControladorUsuarios().crearOperador("andresP", "12235345", "Operador");
+        galeriaConsola.getControladorUsuarios().crearPropietario("santiH", "63248", "Santiago", "456783672");
+        
+    }
+
+
     
     // COMPRADOR
     public static void menuComprador() {
@@ -114,8 +137,13 @@ public class ConsolaUsuarios {
     }
 
     private static void registrarIngresoPieza() {
-        // Implementa el método registrarIngresoPieza
-        System.out.println("Método registrarIngresoPieza no implementado.");
+        setUp();
+        galeriaConsola.getInventario().guardarEnBodega(pinturaAgregar);
+        System.out.println("Se agrego la pieza con la siguiente info a la bodega de la galeria:");
+        System.out.println("Título: "+pinturaAgregar.getTitulo());
+        System.out.println("Año Creación: "+pinturaAgregar.getAnioCreacion());
+        System.out.println("Lugar Creación: "+pinturaAgregar.getLugarCreacion());
+        
     }
 
     private static void confirmarVenta() {
@@ -129,8 +157,11 @@ public class ConsolaUsuarios {
     }
 
     private static void verificarComprador() {
-        // Implementa el método verificarComprador
-        System.out.println("Método verificarComprador no implementado.");
+        setUp();
+        //galeriaConsola.getControladorUsuarios().
+        System.out.println("Se bloqueo la pieza con el siguiente título:");
+        System.out.println("Título: "+foto1.getTitulo());
+        System.out.println("Esta bloqueada: "+foto1.isBloqueada());
     }
 
     private static void aumentarLimite() {
@@ -149,13 +180,20 @@ public class ConsolaUsuarios {
     }
 
     private static void bloquearPieza() {
-        // Implementa el método bloquearPieza
-        System.out.println("Método bloquearPieza no implementado.");
+        setUp();
+        galeriaConsola.getInventario().bloquearPieza("La niña y el buitre");;
+        System.out.println("Se bloqueo la pieza con el siguiente título:");
+        System.out.println("Título: "+foto1.getTitulo());
+        System.out.println("Esta bloqueada: "+foto1.isBloqueada());
+        
     }
 
     private static void desbloquearPieza() {
-        // Implementa el método desbloquearPieza
-        System.out.println("Método desbloquearPieza no implementado.");
+        setUp();
+        galeriaConsola.getInventario().desbloquearPieza("La Flor");
+        System.out.println("Se desbloqueo la pieza con el siguiente título:");
+        System.out.println("Título: "+pintura1.getTitulo());
+        System.out.println("Esta bloqueada: "+pintura1.isBloqueada());
     }
 
 

@@ -59,6 +59,7 @@ public class ControladorUsuarios {
         return propietario;
     }
     
+
     public Empleado obtenerEmpleado(String id){
         return mapaEmpleados.get(id);
     }
@@ -71,5 +72,8 @@ public class ControladorUsuarios {
         return mapaPropietarios.get(id);
     }
 
+    public void agregarComprador (Comprador comprador){
 
+        mapaCompradores.put(comprador.getId(), comprador);
+    }
 }

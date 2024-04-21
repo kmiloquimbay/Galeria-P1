@@ -51,7 +51,9 @@ public class Inventario {
     public void guardarEnBodega(Pieza pieza){
         this.piezasEnBodega.add(pieza);
     }
-
+    public void ponerEnDisponibles(Pieza pieza){
+        this.piezasDisponibleVenta.add(pieza);
+    }
     public void pasarAPasadas(Pieza pieza){
         this.piezasPasadas.add(pieza);
     }
