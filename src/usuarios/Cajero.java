@@ -14,17 +14,29 @@ public class Cajero extends Empleado{
         this.galeria.getAdministrador().confirmarVenta(compra, pieza, idComprador);
         return "Pago registrado";
     }
-    public void entregarPieza(Pieza pieza, String idComprador){
+    public String entregarPieza(Pieza pieza, String idComprador){
         // Entrega una pieza
         if (this.galeria.getAdministrador().verificarComprador(idComprador)){
             this.galeria.getInventario().getPiezasEnBodega().remove(pieza);
             this.galeria.getInventario().getPiezasEnExhibicion().add(pieza);
             String nombre = pieza.getTitulo();
             this.galeria.getAdministrador().desbloquearPieza(nombre);
-            //agregar a misPiezasActuales de propietario
-            this.galeria.getControladorUsuarios().obtenerPropietario(idComprador).getMisPiezasActuales().add(pieza);
-        }
 
+            //agregar a misPiezasActuales del propietario antes comprador
+            if (this.galeria.getControladorUsuarios().obtenerPropietario(idComprador) != null){
+                this.galeria.getControladorUsuarios().obtenerPropietario(idComprador).getMisPiezasActuales().add(pieza);
+                return idComprador;
+            }
+            else{
+                Comprador comprador = this.galeria.getControladorUsuarios().obtenerComprador(idComprador);
+                Propietario propietario=this.galeria.getControladorUsuarios().crearPropietario(comprador.getLogin(),comprador.getPassword(),comprador.getNombre(),comprador.getTelefono());
+                galeria.getControladorUsuarios().agregarPropietario(propietario);
+                propietario.agregarPieza(pieza);
+                return propietario.getId();
+            }
+        }
+        return idComprador;
+       
     }
     
 }

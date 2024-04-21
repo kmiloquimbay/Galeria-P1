@@ -12,7 +12,7 @@ import usuarios.ControladorUsuarios;
 public class Galeria {
     private Inventario inventario;
     private ControladorUsuarios controladorUsuarios;
-    private AdministradorGaleria AdministradorGaleria;
+    private AdministradorGaleria administradorGaleria;
     private Map<String, Subasta> subastas;
     private Map<String, Compra> compras;
 
@@ -37,12 +37,15 @@ public class Galeria {
     }
 
     public AdministradorGaleria getAdministrador(){
-        return AdministradorGaleria;
+        return administradorGaleria;
     }
     public void setControladorUsuarios(ControladorUsuarios controladorUsuarios) {
         this.controladorUsuarios = controladorUsuarios;
     }
 
+    public void setAdministradorGaleria(AdministradorGaleria administradorGaleria) {
+        this.administradorGaleria = administradorGaleria;
+    }
     public Map<String, Subasta> getSubastas() {
         return subastas;
     }
