@@ -21,7 +21,7 @@ public class AdministradorGaleria extends Empleado{
             this.galeria.getInventario().getPiezasEnBodega().add(pieza);
         }
     }
-    public void confirmarVenta(Compra compra, Pieza pieza, String idComprador){
+    public String confirmarVenta(Compra compra, Pieza pieza, String idComprador){
         // Confirma una venta
         if (compra.verificarVentaValorFijo(pieza , compra.getValorPagado()) && verificarComprador(idComprador) && this.galeria.getControladorUsuarios().obtenerComprador(idComprador).getLimiteCompras() >= compra.getValorPagado()){
             this.galeria.getInventario().getPiezasDisponibleVenta().remove(pieza);
@@ -42,6 +42,10 @@ public class AdministradorGaleria extends Empleado{
                 Comprador comprador = this.galeria.getControladorUsuarios().obtenerComprador(idComprador);
                 this.galeria.getControladorUsuarios().crearPropietario(comprador.getLogin(),comprador.getPassword(),comprador.getNombre(),comprador.getTelefono());
             }
+            return "Venta confirmada";
+        }
+        else{
+            return "Venta no confirmada";
         }
     }
     
@@ -87,11 +91,8 @@ public class AdministradorGaleria extends Empleado{
     public void desbloquearPieza(String titulo){
         this.galeria.getInventario().desbloquearPieza(titulo);
     }
-    
-    public boolean verificarUsuario(Comprador comprador){
-        // Verifica si un comprador está registrado
-        return true;
-    }
+
+
 
 
 

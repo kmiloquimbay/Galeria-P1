@@ -6,11 +6,13 @@ import java.util.Map;
 import galeria.compraYsubasta.Compra;
 import galeria.compraYsubasta.Subasta;
 import galeria.inventarioYpiezas.Inventario;
+import usuarios.AdministradorGaleria;
 import usuarios.ControladorUsuarios;
 
 public class Galeria {
     private Inventario inventario;
     private ControladorUsuarios controladorUsuarios;
+    private AdministradorGaleria AdministradorGaleria;
     private Map<String, Subasta> subastas;
     private Map<String, Compra> compras;
 
@@ -33,6 +35,9 @@ public class Galeria {
         return controladorUsuarios;
     }
 
+    public AdministradorGaleria getAdministrador(){
+        return AdministradorGaleria;
+    }
     public void setControladorUsuarios(ControladorUsuarios controladorUsuarios) {
         this.controladorUsuarios = controladorUsuarios;
     }
