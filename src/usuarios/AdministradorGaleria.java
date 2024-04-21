@@ -23,7 +23,7 @@ public class AdministradorGaleria extends Empleado{
     }
     public void confirmarVenta(Compra compra, Pieza pieza, String idComprador){
         // Confirma una venta
-        if (compra.verificarVentaValorFijo(pieza , compra.getValorPagado()) && verificarComprador(idComprador)){
+        if (compra.verificarVentaValorFijo(pieza , compra.getValorPagado()) && verificarComprador(idComprador) && this.galeria.getControladorUsuarios().obtenerComprador(idComprador).getLimiteCompras() >= compra.getValorPagado()){
             this.galeria.getInventario().getPiezasDisponibleVenta().remove(pieza);
             this.galeria.getInventario().getPiezasPasadas().add(pieza);
             String nombre = pieza.getTitulo();
