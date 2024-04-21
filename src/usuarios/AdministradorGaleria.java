@@ -45,13 +45,21 @@ public class AdministradorGaleria extends Empleado{
         }
     }
     
-    public void devolucionPieza(){
+    public void devolucionPieza(Pieza pieza, String idComprador){
         // Realiza una devolución de una pieza
+        if (verificarComprador(idComprador)){
+            this.galeria.getInventario().getPiezasPasadas().remove(pieza);
+            this.galeria.getInventario().getPiezasEnBodega().add(pieza);
+            String nombre = pieza.getTitulo();
+            desbloquearPieza(nombre);
+            //remover de misPiezasActuales de propietario
+            this.galeria.getControladorUsuarios().obtenerPropietario(idComprador).getMisPiezasActuales().remove(pieza);
+            //remover de misPiezas de comprador
+            this.galeria.getControladorUsuarios().obtenerComprador(idComprador).getmisPiezas().remove(pieza);
+        }
+
     }
-    public boolean verificarUsuario(Comprador comprador){
-        // Verifica si un comprador está registrado
-        return true;
-    }
+
     public void aumentarLimite(String id, int aumento){
          Comprador comprador = this.galeria.getControladorUsuarios().obtenerComprador(id);
          if (comprador != null && comprador.getLimiteCompras() + aumento >= 0)
@@ -82,6 +90,10 @@ public class AdministradorGaleria extends Empleado{
         this.galeria.getInventario().desbloquearPieza(titulo);
     }
     
+    public boolean verificarUsuario(Comprador comprador){
+        // Verifica si un comprador está registrado
+        return true;
+    }
 
 
 
