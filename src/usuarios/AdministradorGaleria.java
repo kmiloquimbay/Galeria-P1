@@ -23,13 +23,13 @@ public class AdministradorGaleria extends Empleado{
     }
     public void confirmarVenta(Compra compra, Pieza pieza, String idComprador){
         // Confirma una venta
-        if (compra.verificarVentaValorFijo(pieza , compra.getValorPagado()) && verificarComprador(idComprador)){
+        if (compra.verificarVentaValorFijo(pieza , compra.getValorPagado()) && verificarComprador(idComprador) && this.galeria.getControladorUsuarios().obtenerComprador(idComprador).getLimiteCompras() >= compra.getValorPagado()){
             this.galeria.getInventario().getPiezasDisponibleVenta().remove(pieza);
             this.galeria.getInventario().getPiezasPasadas().add(pieza);
             String nombre = pieza.getTitulo();
             bloquearPieza(nombre);
             //agregar la pieza a misCompras del comprador 
-            this.galeria.getControladorUsuarios().obtenerComprador(idComprador).getmisPiezas().add(pieza);
+            this.galeria.getControladorUsuarios().obtenerComprador(idComprador).agregarCompra(compra);
             //remover de piezasDisponiblesVenta
             this.galeria.getInventario().getPiezasDisponibleVenta().remove(pieza);
             //agregar a piezasPasadas
@@ -54,8 +54,6 @@ public class AdministradorGaleria extends Empleado{
             desbloquearPieza(nombre);
             //remover de misPiezasActuales de propietario
             this.galeria.getControladorUsuarios().obtenerPropietario(idComprador).getMisPiezasActuales().remove(pieza);
-            //remover de misPiezas de comprador
-            this.galeria.getControladorUsuarios().obtenerComprador(idComprador).getmisPiezas().remove(pieza);
         }
 
     }
