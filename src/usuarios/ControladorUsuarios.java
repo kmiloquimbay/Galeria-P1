@@ -76,4 +76,12 @@ public class ControladorUsuarios {
 
         mapaCompradores.put(comprador.getId(), comprador);
     }
+    public void agregarPropietario (Propietario propietario){
+
+        mapaPropietarios.put(propietario.getId(), propietario);
+    }
+    public void agregarEmpleado (Empleado empleado){
+
+        mapaEmpleados.put(empleado.getId(), empleado);
+    }
 }

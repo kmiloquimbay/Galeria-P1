@@ -18,4 +18,7 @@ public class Empleado extends Usuario {
     public void setRol(String rol) {
         this.rol = rol;
     }
+    public String getId() {
+        return id;
+    }
 }

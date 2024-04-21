@@ -43,8 +43,10 @@ public class ConsolaUsuarios {
         galeriaConsola.getInventario().ponerEnDisponibles(video1);
         galeriaConsola.getInventario().ponerEnDisponibles(pintura1);
         galeriaConsola.getControladorUsuarios().agregarComprador(comprador);
-        galeriaConsola.getControladorUsuarios().crearOperador("andresP", "12235345", "Operador");
-        galeriaConsola.getControladorUsuarios().crearPropietario("santiH", "63248", "Santiago", "456783672");
+        galeriaConsola.getControladorUsuarios().agregarPropietario(propietario);
+        galeriaConsola.getControladorUsuarios().agregarEmpleado(admin);
+        galeriaConsola.getControladorUsuarios().agregarEmpleado(cajero);
+        galeriaConsola.getControladorUsuarios().agregarEmpleado(operador);
         
     }
 
@@ -158,10 +160,10 @@ public class ConsolaUsuarios {
 
     private static void verificarComprador() {
         setUp();
-        //galeriaConsola.getControladorUsuarios().
-        System.out.println("Se bloqueo la pieza con el siguiente título:");
-        System.out.println("Título: "+foto1.getTitulo());
-        System.out.println("Esta bloqueada: "+foto1.isBloqueada());
+        
+        System.out.println("El resultado de la verificación de la existencia del comprador con id 547293 fue: ");
+        System.out.println(admin.verificarComprador("547293"));
+        
     }
 
     private static void aumentarLimite() {
