@@ -1,7 +1,9 @@
 package usuarios;
 
 import galeria.Galeria;
+import galeria.compraYsubasta.Compra;
 import galeria.compraYsubasta.Oferta;
+import galeria.inventarioYpiezas.Pieza;
 
 public class AdministradorGaleria extends Empleado{
     public Galeria galeria;
@@ -9,12 +11,20 @@ public class AdministradorGaleria extends Empleado{
         super(login, password, rol,id);
         this.galeria=galeria;
     }
-    public void registrarIngresoPieza(){
-        // Registra el ingreso de una pieza
+    public void registrarIngresoPieza(Pieza pieza){
+        if(this.galeria.getInventario().getPiezasEnExhibicion().contains(pieza)){
+            this.galeria.getInventario().getPiezasEnExhibicion().remove(pieza);
+            this.galeria.getInventario().getPiezasEnBodega().add(pieza);
+        }
+        else if(this.galeria.getInventario().getPiezasPasadas().contains(pieza)){
+            this.galeria.getInventario().getPiezasPasadas().remove(pieza);
+            this.galeria.getInventario().getPiezasEnBodega().add(pieza);
+        }
     }
-    public void confirmarVenta(){
+    public void confirmarVenta(Compra compra){
         // Confirma una venta
-    }
+        }
+    
     public void devolucionPieza(){
         // Realiza una devolución de una pieza
     }
@@ -22,8 +32,10 @@ public class AdministradorGaleria extends Empleado{
         // Verifica si un comprador está registrado
         return true;
     }
-    public void aumentarLimite(){
-        // Aumenta el límite de crédito de un comprador
+    public void aumentarLimite(String id, int aumento){
+         Comprador comprador = this.galeria.getControladorUsuarios().obtenerComprador(id);
+         if (comprador != null && comprador.getLimiteCompras() + aumento >= 0)
+            comprador.setLimiteCompras(comprador.getLimiteCompras() + aumento);
     }
     public boolean verificarComprador(String id){
         if ( this.galeria.getControladorUsuarios().obtenerComprador(id) == null ) 
