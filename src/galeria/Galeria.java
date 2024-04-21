@@ -3,9 +3,6 @@ package galeria;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.json.simple.JSONObject;
-
-
 import galeria.compraYsubasta.Compra;
 import galeria.compraYsubasta.Subasta;
 import galeria.inventarioYpiezas.Inventario;

@@ -1,7 +1,5 @@
 package galeria.inventarioYpiezas;
 
-import java.util.List;
-
 public class Pintura extends Pieza{
     private int alto;
     private int ancho;

@@ -7,7 +7,7 @@ import java.util.Set;
 public class Usuario {
     private String login;
     private String password;
-    private static Set<String> idsExistentes = new HashSet<>();
+    public static Set<String> idsExistentes = new HashSet<>();
 
     // Constructor de Usuario
     public Usuario(String login, String password) {

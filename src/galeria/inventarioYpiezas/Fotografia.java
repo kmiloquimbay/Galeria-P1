@@ -1,7 +1,5 @@
 package galeria.inventarioYpiezas;
 
-import java.util.List;
-
 public class Fotografia extends Pieza{
 
     private String resolucion;

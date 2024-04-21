@@ -3,8 +3,6 @@ package usuarios;
 import java.util.Map;
 
 import galeria.Galeria;
-import galeria.inventarioYpiezas.Inventario;
-
 import java.util.HashMap;
 
 public class ControladorUsuarios {

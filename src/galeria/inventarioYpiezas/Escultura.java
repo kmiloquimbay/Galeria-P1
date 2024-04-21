@@ -1,5 +1,4 @@
 package galeria.inventarioYpiezas;
-import java.util.List;
 
 
 public class Escultura extends Pieza{
