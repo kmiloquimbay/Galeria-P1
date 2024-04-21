@@ -66,6 +66,10 @@ public class Galeria {
         this.compras.put(compra.getId(), compra);
     }
 
+    public Subasta encontrarSubasta(String id) {
+        return subastas.get(id);
+
+    }
 
 
 }

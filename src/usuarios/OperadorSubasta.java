@@ -1,6 +1,8 @@
 package usuarios;
 
 import galeria.Galeria;
+import galeria.compraYsubasta.Oferta;
+import galeria.compraYsubasta.Subasta;
 
 public class OperadorSubasta extends Empleado{
     private Galeria galeria;
@@ -9,14 +11,19 @@ public class OperadorSubasta extends Empleado{
         super(login, password, rol,id);
         this.galeria=galeria;
     }
-    public void terminarSubasta(){
+    public String terminarSubasta(String id){
         // Termina la subasta
+        Subasta subastaTerminar= galeria.encontrarSubasta(id);
+        return subastaTerminar.terminarSubasta();
     }
-    public void recibirRegistrarOferta(){ 
-        // Recibe y registra una oferta
+    public void recibirRegistrarOferta(Oferta oferta,String id ){ 
+        Subasta subasta= galeria.encontrarSubasta(id);
+        subasta.recibirRegistrarOferta(oferta);
     }
-    public void evaluarOferta(){
-        // Evalua una oferta
+    public boolean evaluarOferta(Oferta oferta,String id ){
+        // Evalua que una oferta supere el valor inicial
+        Subasta subasta= galeria.encontrarSubasta(id);
+        return subasta.evaluarOferta(oferta);
     }
 
 

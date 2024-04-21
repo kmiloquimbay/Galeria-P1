@@ -26,6 +26,9 @@ public class Subasta {
         return id;
     }
 
+    public boolean esVendida() {
+        return vendida;
+    }
     public List<Oferta> getOfertas() {
         return ofertas;
     }
@@ -42,12 +45,17 @@ public class Subasta {
         return false;
        }
     }
-    public void recibirRegistrarOferta(Oferta oferta){
+    public String recibirRegistrarOferta(Oferta oferta){
         if (evaluarOferta(oferta)){
             agregarOferta(oferta);
+            return "La oferta se agrego correctamente a la subasta";
+
+        }
+        else{
+            return "La oferta no supero el valor inicial y no pudo ser registrada";
         }
     }
-    public void terminarSubasta(){
+    public String terminarSubasta(){
         Oferta ofertaMax=ofertas.get(0);
         for (Oferta oferta : ofertas) {
             if (oferta.getValorOferta() > ofertaMax.getValorOferta()){
@@ -58,8 +66,12 @@ public class Subasta {
         if (ofertaMax.getValorOferta()>valorMinimo){
             Compra compra= new Compra(id, ofertaMax.getValorOferta(), id,pieza );
             vendida=true;
-            ofertaMax.getComprador().
-             
+            ofertaMax.getComprador().agregarCompra(compra);
+             return "Se termino la subasta con id:"+id;
+        }
+
+        else {
+            return "La subasta no se termino dado que no habián ofertas que cumplieran con el valor mínimo";
         }
     }
 }

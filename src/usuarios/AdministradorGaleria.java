@@ -82,7 +82,7 @@ public class AdministradorGaleria extends Empleado{
             if (comprador.getLimiteCompras() < valorApagar)
                 return "El comprador no tiene suficiente crédito";
             else
-                return "Oferta seria";
+                return "Oferta seria, pues la oferta del comprador "+id+" no supera su límite de compras";
             }
         }
     public void bloquearPieza(String titulo){
