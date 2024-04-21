@@ -11,6 +11,7 @@ public abstract class Pieza {
     private String fechaDevolucion;
     private boolean disponibleVentaValorFijo;
     private boolean bloqueada;
+    private int precioFijo;
 
     public Pieza(String titulo, int anioCreacion, String lugarCreacion, String fechaDevolucion, boolean disponibleVentaValorFijo, boolean bloqueada) {
         this.titulo = titulo;
@@ -20,6 +21,7 @@ public abstract class Pieza {
         this.fechaDevolucion = fechaDevolucion;
         this.disponibleVentaValorFijo = disponibleVentaValorFijo;
         this.bloqueada = bloqueada;
+        this.precioFijo = 0;
     }
 
     public String getTitulo() {
@@ -80,5 +82,9 @@ public abstract class Pieza {
 
     public void agregarAutor(Autor autor) {
         autores.add(autor);
+    }
+
+    public int getPrecioFijo() {
+        return precioFijo;
     }
 }
