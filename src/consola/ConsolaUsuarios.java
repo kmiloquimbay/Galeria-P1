@@ -26,7 +26,7 @@ public class ConsolaUsuarios {
     //Galeria
     public static Autor autor1= new Autor("Leonardo da Vinci", false);
     public static Fotografia foto1= new Fotografia("La niña y el buitre", 1993, "Sudán","20-03-2024", true, false, "10", "200");
-    public static Fotografia foto2= new Fotografia("La torre de Piza", 1355, "Italia","20-12-2024", true, false, "26", "300");
+    public static Fotografia foto2= new Fotografia("La torre de Piza", 1355, "Italia","20-12-2024", false, false, "26", "300");
     public static Video video1= new Video("La Vie", 1983, "Francia","14-11-2024", true, false, "40", "200");
     public static Pintura pintura1=new Pintura("La Flor", 1964, "Italia","20-12-2025", true, true, 77, 53, "Oleo");
     public static Inventario inventario1= new Inventario();
@@ -122,10 +122,11 @@ public class ConsolaUsuarios {
     }
 
     public static void realizarCompraFija() {
-        
-        // Implementa el método para realizar una compra fija
-        System.out.println("Método realizarCompraFija no implementado.");
-        
+        System.out.println("El resultado de la compra de la pieza con título "+ foto1.getTitulo()+ " fue: "); 
+        System.out.println(comprador.realizarCompraFija(foto1)); 
+        System.out.println("El resultado de la compra de la pieza con título "+ foto2.getTitulo()+ " fue: "); 
+        System.out.println(comprador.realizarCompraFija(foto2));
+
     }
 
 
@@ -238,8 +239,7 @@ public class ConsolaUsuarios {
     }
 
     private static void registrarIngresoPieza() {
-        
-        galeriaConsola.getInventario().guardarEnBodega(pinturaAgregar);
+        admin.registrarIngresoPieza(pinturaAgregar);
         System.out.println("Se agrego la pieza con la siguiente info a la bodega de la galeria:");
         System.out.println("Título: "+pinturaAgregar.getTitulo());
         System.out.println("Año Creación: "+pinturaAgregar.getAnioCreacion());
@@ -255,10 +255,10 @@ public class ConsolaUsuarios {
 
     private static void devolucionPieza() {
         
-        System.out.println("El propietario tienae"+ propietario.getMisPiezasActuales().size()+" piezas.");
+        System.out.println("El propietario tenia "+ propietario.getMisPiezasActuales().size()+" piezas.");
         admin.devolucionPieza(video1,"547902");
         List<Pieza> piezasActuales=propietario.getMisPiezasActuales();
-        System.out.println("Se elimino la pieza: "+video1.getTitulo()+ " y al propietario le quedaron:"+ piezasActuales.size()+" piezas.");
+        System.out.println("Se elimino la pieza: "+video1.getTitulo()+ " y al propietario le quedaron: "+ piezasActuales.size()+" piezas.");
         
             
         }
@@ -274,8 +274,9 @@ public class ConsolaUsuarios {
 
     private static void aumentarLimite() {
        
+        System.out.println("El límite anterior del comprador 547293 es: "+comprador.getLimiteCompras());
         admin.aumentarLimite("547293", 200000);
-        System.out.println("El nuevo limite del comprador 547293 es: "+comprador.getLimiteCompras());
+        System.out.println("El nuevo límite del comprador 547293 es: "+comprador.getLimiteCompras());
         
     }
 
@@ -283,13 +284,14 @@ public class ConsolaUsuarios {
 
     private static void verificarSeriedadOferta() {
         
-        
+        Comprador comprador=galeriaConsola.getControladorUsuarios().obtenerComprador("547293");
+        System.out.println("El limite de compras del comprador 547293 es "+comprador.getLimiteCompras());
+        System.out.println("La oferta es de 20000");
         System.out.println(admin.verificarSeriedadOferta("547293", 20000));
     }
 
     private static void bloquearPieza() {
-       
-        galeriaConsola.getInventario().bloquearPieza("La niña y el buitre");;
+        admin.bloquearPieza("La niña y el buitre");
         System.out.println("Se bloqueo la pieza con el siguiente título:");
         System.out.println("Título: "+foto1.getTitulo());
         System.out.println("Esta bloqueada: "+foto1.isBloqueada());
@@ -297,8 +299,7 @@ public class ConsolaUsuarios {
     }
 
     private static void desbloquearPieza() {
-        
-        galeriaConsola.getInventario().desbloquearPieza("La Flor");
+        admin.desbloquearPieza("La Flor");
         System.out.println("Se desbloqueo la pieza con el siguiente título:");
         System.out.println("Título: "+pintura1.getTitulo());
         System.out.println("Esta bloqueada: "+pintura1.isBloqueada());
@@ -346,6 +347,7 @@ public class ConsolaUsuarios {
     private static void terminarSubasta() {
         
         String respuesta=operador.terminarSubasta("6748899");
+        System.out.println("El resultado de terminar la subasta 6748899 fue:");
         System.out.println(respuesta);
         
     }
@@ -354,6 +356,7 @@ public class ConsolaUsuarios {
         
         
         String respuesta=operador.recibirRegistrarOferta(ofertaRecibir,"6748899");
+        System.out.println("Se recibio la oferta con un valor de "+ofertaRecibir.getValorOferta()+" a la subasta con id 6748899 y el resultado de su registro es:");
         System.out.println(respuesta);
     }
 

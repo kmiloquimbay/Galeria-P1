@@ -42,7 +42,7 @@ public class Comprador extends Cliente {
             return "Compra realizada";
         }
         else{
-            return "Compra no realizada";
+            return "Compra no realizada pues la pieza no estaba disponible para ser vendida por compra fija o el precio de la pieza supera tu límite de compras";
         }
     }
     public void verHistorialCompras(){
