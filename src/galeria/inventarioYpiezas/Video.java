@@ -1,5 +1,4 @@
 package galeria.inventarioYpiezas;
-import java.util.List;
 
 public class Video extends Pieza{
     private String duracion;
@@ -25,5 +24,9 @@ public class Video extends Pieza{
 
     public void setTamanio(String tamanio) {
         this.tamanio = tamanio;
+    }
+
+    public String getTipoPieza(){
+        return "Video";
     }
 }

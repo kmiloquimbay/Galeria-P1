@@ -23,6 +23,7 @@ public class Galeria {
         this.compras = new HashMap<String, Compra>( );
     }
 
+
     public Inventario getInventario() {
         return inventario;
     }

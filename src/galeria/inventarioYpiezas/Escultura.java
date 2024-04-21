@@ -1,5 +1,4 @@
 package galeria.inventarioYpiezas;
-import java.util.List;
 
 
 public class Escultura extends Pieza{
@@ -67,6 +66,11 @@ public class Escultura extends Pieza{
 
     public void setNecesitaElectricidad(boolean necesitaElectricidad) {
         this.necesitaElectricidad = necesitaElectricidad;
+    }
+
+
+    public String getTipoPieza() {
+        return "Escultura";
     }
 
 }

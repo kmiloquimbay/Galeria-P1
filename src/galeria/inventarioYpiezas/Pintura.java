@@ -1,7 +1,5 @@
 package galeria.inventarioYpiezas;
 
-import java.util.List;
-
 public class Pintura extends Pieza{
     private int alto;
     private int ancho;
@@ -36,6 +34,10 @@ public class Pintura extends Pieza{
 
     public void setTecnica(String tecnica) {
         this.tecnica = tecnica;
+    }
+
+    public String getTipoPieza(){
+        return "Pintura";
     }
 
 }

@@ -1,7 +1,5 @@
 package galeria.inventarioYpiezas;
 
-import java.util.List;
-
 public class Fotografia extends Pieza{
 
     private String resolucion;
@@ -27,6 +25,10 @@ public class Fotografia extends Pieza{
 
     public void setTamanio(String tamanio) {
         this.tamanio = tamanio;
+    }
+
+    public String getTipoPieza(){
+        return "Fotografia";
     }
 
 

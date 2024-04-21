@@ -45,6 +45,11 @@ public class Comprador extends Cliente {
             return "Compra no realizada";
         }
     }
+    public void verHistorialCompras(){
+        for (Compra compra : misCompras) {
+            System.out.println(compra);
+        }
+    }
     
 
 }

@@ -2,7 +2,6 @@ package usuarios;
 
 import galeria.Galeria;
 import galeria.compraYsubasta.Compra;
-import galeria.compraYsubasta.Oferta;
 import galeria.inventarioYpiezas.Pieza;
 
 public class AdministradorGaleria extends Empleado{
@@ -91,9 +90,6 @@ public class AdministradorGaleria extends Empleado{
     public void desbloquearPieza(String titulo){
         this.galeria.getInventario().desbloquearPieza(titulo);
     }
-
-
-
-
+    
 
 }
