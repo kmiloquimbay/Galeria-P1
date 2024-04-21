@@ -21,9 +21,24 @@ public class AdministradorGaleria extends Empleado{
             this.galeria.getInventario().getPiezasEnBodega().add(pieza);
         }
     }
-    public void confirmarVenta(Compra compra){
+    public void confirmarVenta(Compra compra, Pieza pieza){
         // Confirma una venta
+        if (compra.verificarVentaValorFijo(pieza , compra.getValorPagado())){
+            this.galeria.getInventario().getPiezasDisponibleVenta().remove(pieza);
+            this.galeria.getInventario().getPiezasPasadas().add(pieza);
+            String nombre = pieza.getTitulo();
+            bloquearPieza(nombre);
+            //agregar la pieza a misCompras del comprador 
+            this.galeria.getControladorUsuarios().obtenerComprador(compra.getId()).getmisPiezas().add(pieza);
+            //remover de piezasDisponiblesVenta
+            this.galeria.getInventario().getPiezasDisponibleVenta().remove(pieza);
+            //agregar a piezasPasadas
+            this.galeria.getInventario().getPiezasPasadas().add(pieza);
+
+
+
         }
+    }
     
     public void devolucionPieza(){
         // Realiza una devolución de una pieza

@@ -6,9 +6,13 @@ public class Compra {
     private String id;
     private int valorPagado;
     private String tipoPago;
+    private Pieza pieza;
 
-    public Compra(String id) {
+    public Compra(String id, int valorPagado, String tipoPago, Pieza pieza) {
         this.id = id;
+        this.valorPagado = valorPagado;
+        this.tipoPago = tipoPago;
+        this.pieza = pieza;
     }
 
     public String getId() {
@@ -21,6 +25,22 @@ public class Compra {
 
     public void setValorPagado(int valorPagado) {
         this.valorPagado = valorPagado;
+    }
+
+    public String getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
+    }
+
+    public Pieza getPieza() {
+        return pieza;
+    }
+
+    public void setPieza(Pieza pieza) {
+        this.pieza = pieza;
     }
 
     public boolean verificarVentaValorFijo(Pieza pieza, int valorPagado){
