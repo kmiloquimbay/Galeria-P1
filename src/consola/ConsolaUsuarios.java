@@ -39,7 +39,7 @@ public class ConsolaUsuarios {
     //Subastas y Compras
     public static Oferta oferta1= new Oferta(20000, comprador);
     public static Oferta oferta2= new Oferta(40000, comprador);
-    public static Subasta subasta= new Subasta("6748899",39034,28904);
+    public static Subasta subasta= new Subasta("6748899",39034,28904,video1);
 
     
     public static void setUp(){
