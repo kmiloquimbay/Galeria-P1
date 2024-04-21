@@ -39,7 +39,9 @@ public class AdministradorGaleria extends Empleado{
             }
             else{
                 Comprador comprador = this.galeria.getControladorUsuarios().obtenerComprador(idComprador);
-                this.galeria.getControladorUsuarios().crearPropietario(comprador.getLogin(),comprador.getPassword(),comprador.getNombre(),comprador.getTelefono());
+                Propietario propietario=this.galeria.getControladorUsuarios().crearPropietario(comprador.getLogin(),comprador.getPassword(),comprador.getNombre(),comprador.getTelefono());
+                galeria.getControladorUsuarios().agregarPropietario(propietario);
+                propietario.agregarPieza(pieza);
             }
             return "Venta confirmada";
         }

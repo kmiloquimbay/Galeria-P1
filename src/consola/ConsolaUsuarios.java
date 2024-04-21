@@ -26,6 +26,7 @@ public class ConsolaUsuarios {
     //Galeria
     public static Autor autor1= new Autor("Leonardo da Vinci", false);
     public static Fotografia foto1= new Fotografia("La niña y el buitre", 1993, "Sudán","20-03-2024", true, false, "10", "200");
+    public static Fotografia foto2= new Fotografia("La torre de Piza", 1355, "Italia","20-12-2024", true, false, "26", "300");
     public static Video video1= new Video("La Vie", 1983, "Francia","14-11-2024", true, false, "40", "200");
     public static Pintura pintura1=new Pintura("La Flor", 1964, "Italia","20-12-2025", true, true, 77, 53, "Oleo");
     public static Inventario inventario1= new Inventario();
@@ -71,6 +72,7 @@ public class ConsolaUsuarios {
         galeriaConsola.agregarCompra(compra2);
         comprador.agregarCompra(compra1);
         comprador.agregarCompra(compra2);
+        galeriaConsola.setAdministradorGaleria(admin);
     }
 
 
@@ -79,7 +81,7 @@ public class ConsolaUsuarios {
     public static void menuComprador() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
-
+        setUp();
         do {
             System.out.println("\n--- Menú Comprador ---");
             System.out.println("1. Ver historial de compras");
@@ -108,7 +110,7 @@ public class ConsolaUsuarios {
     }
 
     private static void verHistorialCompras() {
-        setUp();
+        
         List<Compra> misCompras=comprador.getmisCompras();
         System.out.println("Tus compras son:");
         System.out.println(misCompras.size());
@@ -120,7 +122,7 @@ public class ConsolaUsuarios {
     }
 
     public static void realizarCompraFija() {
-        setUp();
+        
         // Implementa el método para realizar una compra fija
         System.out.println("Método realizarCompraFija no implementado.");
         
@@ -131,7 +133,7 @@ public class ConsolaUsuarios {
     public static void menuPropietario() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
-
+        setUp();
         do {
             System.out.println("\n--- Menú Propietario ---");
             System.out.println("1. Ver mis piezas actuales");
@@ -158,7 +160,7 @@ public class ConsolaUsuarios {
     }
 
     private static void verMisPiezasActuales() {
-        setUp();
+        
         List<Pieza> piezasActuales=propietario.getMisPiezasActuales();
         System.out.println("Tus piezas actuales son:");
         for (Pieza pieza : piezasActuales) {
@@ -169,7 +171,7 @@ public class ConsolaUsuarios {
 
 
     private static void verMisPiezasPasadas()  {
-        setUp();
+        
         List<Pieza> piezasPasadas=propietario.getMisPiezasPasadas();
         System.out.println("Tus piezas pasadas son:");
         for (Pieza pieza : piezasPasadas) {
@@ -183,7 +185,7 @@ public class ConsolaUsuarios {
     public static void menuAdministradorGaleria() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
-
+        setUp();
         do {
             System.out.println("\n--- Menú Administrador de Galería ---");
             System.out.println("1. Registrar ingreso de pieza");
@@ -236,7 +238,7 @@ public class ConsolaUsuarios {
     }
 
     private static void registrarIngresoPieza() {
-        setUp();
+        
         galeriaConsola.getInventario().guardarEnBodega(pinturaAgregar);
         System.out.println("Se agrego la pieza con la siguiente info a la bodega de la galeria:");
         System.out.println("Título: "+pinturaAgregar.getTitulo());
@@ -246,13 +248,13 @@ public class ConsolaUsuarios {
     }
 
     private static void confirmarVenta() {
-        setUp();
+        
         admin.confirmarVenta(compra1,foto1,"547293");
         System.out.println("Se confirmo la venta de la pieza "+foto1.getTitulo()+" por un precio de "+compra1.getValorPagado());
     }
 
     private static void devolucionPieza() {
-        setUp();
+        
         System.out.println("El propietario tienae"+ propietario.getMisPiezasActuales().size()+" piezas.");
         admin.devolucionPieza(video1,"547902");
         List<Pieza> piezasActuales=propietario.getMisPiezasActuales();
@@ -263,7 +265,7 @@ public class ConsolaUsuarios {
     
 
     private static void verificarComprador() {
-        setUp();
+        
         
         System.out.println("El resultado de la verificación de la existencia del comprador con id 547293 fue: ");
         System.out.println(admin.verificarComprador("547293"));
@@ -271,7 +273,7 @@ public class ConsolaUsuarios {
     }
 
     private static void aumentarLimite() {
-        setUp();
+       
         admin.aumentarLimite("547293", 200000);
         System.out.println("El nuevo limite del comprador 547293 es: "+comprador.getLimiteCompras());
         
@@ -280,13 +282,13 @@ public class ConsolaUsuarios {
 
 
     private static void verificarSeriedadOferta() {
-        setUp();
+        
         
         System.out.println(admin.verificarSeriedadOferta("547293", 20000));
     }
 
     private static void bloquearPieza() {
-        setUp();
+       
         galeriaConsola.getInventario().bloquearPieza("La niña y el buitre");;
         System.out.println("Se bloqueo la pieza con el siguiente título:");
         System.out.println("Título: "+foto1.getTitulo());
@@ -295,7 +297,7 @@ public class ConsolaUsuarios {
     }
 
     private static void desbloquearPieza() {
-        setUp();
+        
         galeriaConsola.getInventario().desbloquearPieza("La Flor");
         System.out.println("Se desbloqueo la pieza con el siguiente título:");
         System.out.println("Título: "+pintura1.getTitulo());
@@ -309,7 +311,7 @@ public class ConsolaUsuarios {
     public static void menuOperadorSubastas() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
-
+        setUp();
         do {
             System.out.println("\n--- Menú Operador de Subastas ---");
             System.out.println("1. Terminar subasta");
@@ -342,21 +344,21 @@ public class ConsolaUsuarios {
     }
 
     private static void terminarSubasta() {
-        setUp();
+        
         String respuesta=operador.terminarSubasta("6748899");
         System.out.println(respuesta);
         
     }
 
     private static void recibirRegistrarOferta() {
-        setUp();
+        
         
         String respuesta=operador.recibirRegistrarOferta(ofertaRecibir,"6748899");
         System.out.println(respuesta);
     }
 
     private static void evaluarOferta() {
-        setUp();
+        
         if (operador.evaluarOferta(ofertaRecibir,"6748899")==true){
             System.out.println("La oferta es correcta pues supera el valor inicial de la subasta");
         }
@@ -371,7 +373,7 @@ public class ConsolaUsuarios {
     public static void menuCajero() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
-
+        setUp();
         do {
             System.out.println("\n--- Menú Cajero ---");
             System.out.println("1. Registrar pago");
@@ -400,12 +402,19 @@ public class ConsolaUsuarios {
     }
 
     private static void registrarPago() {
-        // Implementa el método registrarPago
-        System.out.println("Método registrarPago no implementado.");
+        
+        System.out.println("El estado de registro del pago de la compra con id 567890 por el comprador con el id 547293 es: ");
+        System.out.println(cajero.registrarPago(compra1, foto1,"547293"));
     }
 
     private static void entregarPieza() {
-        // Implementa el método entregarPieza
-        System.out.println("Método entregarPieza no implementado.");
+        
+        String id=cajero.entregarPieza(foto2, "547293");
+        System.out.println("La pieza con título "+ foto2.getTitulo()+ " fue entregada al comprador con id 547293");
+        System.out.println("Ahora las piezas del comprador son: ");
+        for (Pieza pieza :galeriaConsola.getControladorUsuarios().obtenerPropietario(id).getMisPiezasActuales() ) {
+            System.out.println(pieza.getTitulo());
+            
+        }
     }
 }
