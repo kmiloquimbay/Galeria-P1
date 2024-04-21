@@ -37,9 +37,9 @@ public class ConsolaUsuarios {
     public static OperadorSubasta operador= new OperadorSubasta("andresP", "12235345", "Operador",galeriaConsola, "653907");
 
     //Subastas y Compras
-    public static Oferta oferta1= new Oferta(200000, comprador);
+    public static Oferta oferta1= new Oferta(20000, comprador);
     public static Oferta oferta2= new Oferta(40000, comprador);
-    public static Subasta subasta= new Subasta(null)
+    public static Subasta subasta= new Subasta("6748899",39034,28904);
 
     
     public static void setUp(){
@@ -54,6 +54,8 @@ public class ConsolaUsuarios {
         galeriaConsola.getControladorUsuarios().agregarEmpleado(admin);
         galeriaConsola.getControladorUsuarios().agregarEmpleado(cajero);
         galeriaConsola.getControladorUsuarios().agregarEmpleado(operador);
+        subasta.agregarOferta(oferta1);
+        subasta.agregarOferta(oferta2);
         
     }
 
