@@ -13,4 +13,7 @@ public class Oferta {
     public int getValorOferta() {
         return valorOferta;
     }
+    public Comprador getComprador() {
+        return comprador;
+    }
 }
