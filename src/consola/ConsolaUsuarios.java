@@ -3,7 +3,8 @@ package consola;
 import java.util.Scanner;
 
 import galeria.Galeria;
-
+import galeria.compraYsubasta.Oferta;
+import galeria.compraYsubasta.Subasta;
 import galeria.inventarioYpiezas.Autor;
 import galeria.inventarioYpiezas.Fotografia;
 import galeria.inventarioYpiezas.Inventario;
@@ -19,7 +20,7 @@ import usuarios.Propietario;
 public class ConsolaUsuarios {
     
     //Setup para mostrar el funcionamiento de los reqs
-    
+    //Galeria
     public static Autor autor1= new Autor("Leonardo da Vinci", false);
     public static Fotografia foto1= new Fotografia("La niña y el buitre", 1993, "Sudán","20-03-2024", true, false, "10", "200");
     public static Video video1= new Video("La Vie", 1983, "Francia","14-11-2024", true, false, "40", "200");
@@ -28,12 +29,18 @@ public class ConsolaUsuarios {
     public static ControladorUsuarios controlador= new ControladorUsuarios();
     public static Galeria galeriaConsola = new Galeria(inventario1,controlador);
     public static Pintura pinturaAgregar=new Pintura("Mona Lisa", 1506, "Italia","20-10-2024", true, false, 77, 53, "Oleo");
-    
+    //Usuarios
     public static Comprador comprador= new Comprador("LuisP", "12345", "Luis","3456289290", 1000000,galeriaConsola.getInventario().getPiezasDisponibleVenta(), "547293");
     public static Propietario propietario= new Propietario("santiH", "63248", "Santiago", "456783672","547902");
     public static AdministradorGaleria admin= new AdministradorGaleria("fabio24", "1226745", "Admin",galeriaConsola, "562901");
     public static Cajero cajero= new  Cajero("juanito2", "762598", "Cajero",galeriaConsola, "4439035");
     public static OperadorSubasta operador= new OperadorSubasta("andresP", "12235345", "Operador",galeriaConsola, "653907");
+
+    //Subastas y Compras
+    public static Oferta oferta1= new Oferta(200000, comprador);
+    public static Oferta oferta2= new Oferta(40000, comprador);
+    public static Subasta subasta= new Subasta(null)
+
     
     public static void setUp(){
         galeriaConsola.getInventario().guardarEnBodega(foto1);
@@ -177,8 +184,9 @@ public class ConsolaUsuarios {
     }
 
     private static void verificarSeriedadOferta() {
-        // Implementa el método verificarSeriedadOferta
-        System.out.println("Método verificarSeriedadOferta no implementado.");
+        setUp();
+        
+        System.out.println(admin.verificarSeriedadOferta("547293", 20000));
     }
 
     private static void bloquearPieza() {
