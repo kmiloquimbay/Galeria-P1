@@ -21,22 +21,27 @@ public class AdministradorGaleria extends Empleado{
             this.galeria.getInventario().getPiezasEnBodega().add(pieza);
         }
     }
-    public void confirmarVenta(Compra compra, Pieza pieza){
+    public void confirmarVenta(Compra compra, Pieza pieza, String idComprador){
         // Confirma una venta
-        if (compra.verificarVentaValorFijo(pieza , compra.getValorPagado())){
+        if (compra.verificarVentaValorFijo(pieza , compra.getValorPagado()) && verificarComprador(idComprador)){
             this.galeria.getInventario().getPiezasDisponibleVenta().remove(pieza);
             this.galeria.getInventario().getPiezasPasadas().add(pieza);
             String nombre = pieza.getTitulo();
             bloquearPieza(nombre);
             //agregar la pieza a misCompras del comprador 
-            this.galeria.getControladorUsuarios().obtenerComprador(compra.getId()).getmisPiezas().add(pieza);
+            this.galeria.getControladorUsuarios().obtenerComprador(idComprador).getmisPiezas().add(pieza);
             //remover de piezasDisponiblesVenta
             this.galeria.getInventario().getPiezasDisponibleVenta().remove(pieza);
             //agregar a piezasPasadas
             this.galeria.getInventario().getPiezasPasadas().add(pieza);
-
-
-
+            //agregar a misPiezasActuales de priopetario
+            if (this.galeria.getControladorUsuarios().obtenerPropietario(idComprador) != null){
+                this.galeria.getControladorUsuarios().obtenerPropietario(idComprador).getMisPiezasActuales().add(pieza);
+            }
+            else{
+                Comprador comprador = this.galeria.getControladorUsuarios().obtenerComprador(idComprador);
+                this.galeria.getControladorUsuarios().crearPropietario(comprador.getLogin(),comprador.getPassword(),comprador.getNombre(),comprador.getTelefono());
+            }
         }
     }
     

@@ -18,11 +18,11 @@ public class Propietario extends Cliente{
         // Agrega un empleado
     }
 
-    public List getMisPiezasActuales(){
+    public List<Pieza> getMisPiezasActuales(){
         return misPiezasActuales;
     }
 
-    public List getMisPiezasPasadas(){
+    public List<Pieza> getMisPiezasPasadas(){
         return misPiezasPasadas;
     }
     public void agregarPieza(Pieza pieza){
