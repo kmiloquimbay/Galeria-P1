@@ -36,4 +36,8 @@ public class Pintura extends Pieza{
         this.tecnica = tecnica;
     }
 
+    public String getTipoPieza(){
+        return "Pintura";
+    }
+
 }

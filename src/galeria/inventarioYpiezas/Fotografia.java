@@ -27,5 +27,9 @@ public class Fotografia extends Pieza{
         this.tamanio = tamanio;
     }
 
+    public String getTipoPieza(){
+        return "Fotografia";
+    }
+
 
 }
