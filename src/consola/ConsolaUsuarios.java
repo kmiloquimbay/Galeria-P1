@@ -108,15 +108,19 @@ public class ConsolaUsuarios {
     }
 
     private static void verHistorialCompras() {
+        setUp();
         List<Compra> misCompras=comprador.getmisCompras();
         System.out.println("Tus compras son:");
+        System.out.println(misCompras.size());
         for (Compra compra : misCompras) {
+            
             System.out.println("Pieza:"+ compra.getPieza().getTitulo()+ " Valor Pagado: "+ compra.getValorPagado()); 
         }
             
     }
 
     public static void realizarCompraFija() {
+        setUp();
         // Implementa el método para realizar una compra fija
         System.out.println("Método realizarCompraFija no implementado.");
         
@@ -154,6 +158,7 @@ public class ConsolaUsuarios {
     }
 
     private static void verMisPiezasActuales() {
+        setUp();
         List<Pieza> piezasActuales=propietario.getMisPiezasActuales();
         System.out.println("Tus piezas actuales son:");
         for (Pieza pieza : piezasActuales) {
@@ -164,6 +169,7 @@ public class ConsolaUsuarios {
 
 
     private static void verMisPiezasPasadas()  {
+        setUp();
         List<Pieza> piezasPasadas=propietario.getMisPiezasPasadas();
         System.out.println("Tus piezas pasadas son:");
         for (Pieza pieza : piezasPasadas) {
@@ -247,12 +253,11 @@ public class ConsolaUsuarios {
 
     private static void devolucionPieza() {
         setUp();
+        System.out.println("El propietario tienae"+ propietario.getMisPiezasActuales().size()+" piezas.");
         admin.devolucionPieza(video1,"547902");
         List<Pieza> piezasActuales=propietario.getMisPiezasActuales();
-        System.out.println("Se elimino la pieza: "+video1.getTitulo()+ " y al propietario la quedaron las siguientes piezas:");
-        for (Pieza pieza : piezasActuales) {
-            System.out.println(pieza.getTitulo()); 
-        }
+        System.out.println("Se elimino la pieza: "+video1.getTitulo()+ " y al propietario le quedaron:"+ piezasActuales.size()+" piezas.");
+        
             
         }
     
@@ -338,14 +343,16 @@ public class ConsolaUsuarios {
 
     private static void terminarSubasta() {
         setUp();
-        operador.terminarSubasta("6748899");
-        
+        String respuesta=operador.terminarSubasta("6748899");
+        System.out.println(respuesta);
         
     }
 
     private static void recibirRegistrarOferta() {
         setUp();
-        operador.recibirRegistrarOferta(ofertaRecibir,"6748899");
+        
+        String respuesta=operador.recibirRegistrarOferta(ofertaRecibir,"6748899");
+        System.out.println(respuesta);
     }
 
     private static void evaluarOferta() {

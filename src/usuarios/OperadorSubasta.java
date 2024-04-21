@@ -16,9 +16,9 @@ public class OperadorSubasta extends Empleado{
         Subasta subastaTerminar= galeria.encontrarSubasta(id);
         return subastaTerminar.terminarSubasta();
     }
-    public void recibirRegistrarOferta(Oferta oferta,String id ){ 
+    public String recibirRegistrarOferta(Oferta oferta,String id ){ 
         Subasta subasta= galeria.encontrarSubasta(id);
-        subasta.recibirRegistrarOferta(oferta);
+        return subasta.recibirRegistrarOferta(oferta);
     }
     public boolean evaluarOferta(Oferta oferta,String id ){
         // Evalua que una oferta supere el valor inicial
