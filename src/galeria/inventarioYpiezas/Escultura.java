@@ -68,4 +68,9 @@ public class Escultura extends Pieza{
         this.necesitaElectricidad = necesitaElectricidad;
     }
 
+
+    public String getTipoPieza() {
+        return "Escultura";
+    }
+
 }

@@ -12,6 +12,7 @@ public abstract class Pieza {
     private boolean disponibleVentaValorFijo;
     private boolean bloqueada;
     private int precioFijo;
+    public abstract String getTipoPieza();
 
     public Pieza(String titulo, int anioCreacion, String lugarCreacion, String fechaDevolucion, boolean disponibleVentaValorFijo, boolean bloqueada) {
         this.titulo = titulo;
