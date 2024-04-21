@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import galeria.Galeria;
+import galeria.compraYsubasta.Compra;
 import galeria.compraYsubasta.Oferta;
 import galeria.compraYsubasta.Subasta;
 import galeria.inventarioYpiezas.Autor;
@@ -43,6 +44,8 @@ public class ConsolaUsuarios {
     public static Oferta oferta2= new Oferta(40000, comprador);
     public static Oferta ofertaRecibir= new Oferta(25000, comprador);
     public static Subasta subasta1= new Subasta("6748899",39034,15000,video1);
+    public static Compra compra1= new Compra("567890", 20000, "tarjeta", foto1);
+    public static Compra compra2= new Compra("587650", 70000, "tarjeta", pinturaAgregar);
 
     
     public static void setUp(){
@@ -64,6 +67,10 @@ public class ConsolaUsuarios {
         propietario.agregarPieza(video1);
         propietario.agregarPieza(pintura1);
         propietario.pasarAPasadas(pintura1);
+        galeriaConsola.agregarCompra(compra1);
+        galeriaConsola.agregarCompra(compra2);
+        comprador.agregarCompra(compra1);
+        comprador.agregarCompra(compra2);
     }
 
 
@@ -86,7 +93,7 @@ public class ConsolaUsuarios {
                     verHistorialCompras();
                     break;
                 case 2:
-                    // Lógica para realizar compra fija
+                    realizarCompraFija();
                     break;
                 case 3:
                     System.out.println("Saliendo...");
@@ -101,14 +108,18 @@ public class ConsolaUsuarios {
     }
 
     private static void verHistorialCompras() {
-        // Implementa el método para ver el historial de compras del comprador
-        System.out.println("Método verHistorialCompras no implementado.");
+        List<Compra> misCompras=comprador.getmisCompras();
+        System.out.println("Tus compras son:");
+        for (Compra compra : misCompras) {
+            System.out.println("Pieza:"+ compra.getPieza().getTitulo()+ " Valor Pagado: "+ compra.getValorPagado()); 
+        }
+            
     }
 
-    public List<String> realizarCompraFija(Pieza pieza) {
+    public static void realizarCompraFija() {
         // Implementa el método para realizar una compra fija
         System.out.println("Método realizarCompraFija no implementado.");
-        return null;
+        
     }
 
 
@@ -174,10 +185,9 @@ public class ConsolaUsuarios {
             System.out.println("3. Devolución de pieza");
             System.out.println("4. Verificar comprador");
             System.out.println("5. Aumentar límite de crédito");
-            System.out.println("6. Verificar usuario");
-            System.out.println("7. Verificar seriedad de oferta");
-            System.out.println("8. Bloquear pieza");
-            System.out.println("9. Desbloquear pieza");
+            System.out.println("6. Verificar seriedad de oferta");
+            System.out.println("7. Bloquear pieza");
+            System.out.println("8. Desbloquear pieza");
             System.out.println("0. Volver al Menú Principal");
             System.out.print("Seleccione una acción: ");
             opcion = scanner.nextInt();
@@ -199,15 +209,12 @@ public class ConsolaUsuarios {
                     aumentarLimite();
                     break;
                 case 6:
-                    verificarUsuario();
-                    break;
-                case 7:
                     verificarSeriedadOferta();
                     break;
-                case 8:
+                case 7:
                     bloquearPieza();
                     break;
-                case 9:
+                case 8:
                     desbloquearPieza();
                     break;
                 case 0:
@@ -233,14 +240,22 @@ public class ConsolaUsuarios {
     }
 
     private static void confirmarVenta() {
-        // Implementa el método confirmarVenta
-        System.out.println("Método confirmarVenta no implementado.");
+        setUp();
+        admin.confirmarVenta(compra1,foto1,"547293");
+        System.out.println("Se confirmo la venta de la pieza "+foto1.getTitulo()+" por un precio de "+compra1.getValorPagado());
     }
 
     private static void devolucionPieza() {
-        // Implementa el método devolucionPieza
-        System.out.println("Método devolucionPieza no implementado.");
-    }
+        setUp();
+        admin.devolucionPieza(video1,"547902");
+        List<Pieza> piezasActuales=propietario.getMisPiezasActuales();
+        System.out.println("Se elimino la pieza: "+video1.getTitulo()+ " y al propietario la quedaron las siguientes piezas:");
+        for (Pieza pieza : piezasActuales) {
+            System.out.println(pieza.getTitulo()); 
+        }
+            
+        }
+    
 
     private static void verificarComprador() {
         setUp();
@@ -251,14 +266,13 @@ public class ConsolaUsuarios {
     }
 
     private static void aumentarLimite() {
-        // Implementa el método aumentarLimite
-        System.out.println("Método aumentarLimite no implementado.");
+        setUp();
+        admin.aumentarLimite("547293", 200000);
+        System.out.println("El nuevo limite del comprador 547293 es: "+comprador.getLimiteCompras());
+        
     }
 
-    private static void verificarUsuario() {
-        // Implementa el método verificarUsuario
-        System.out.println("Método verificarUsuario no implementado.");
-    }
+
 
     private static void verificarSeriedadOferta() {
         setUp();
