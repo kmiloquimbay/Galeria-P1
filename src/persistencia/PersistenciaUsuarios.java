@@ -82,7 +82,7 @@ public class PersistenciaUsuarios {
         return administradorJSON;
     }
 
-    public JSONObject guardarUsuario(Usuario usuario){
+    public static JSONObject guardarUsuario(Usuario usuario){
         JSONObject usuarioJSON = new JSONObject();
         usuarioJSON.put("login", usuario.getLogin());
         usuarioJSON.put("password", usuario.getPassword());
@@ -107,7 +107,7 @@ public class PersistenciaUsuarios {
 
     }
 
-    public void guardarCliente(Cliente cliente, JSONObject usuarioJSON){
+    public static void guardarCliente(Cliente cliente, JSONObject usuarioJSON){
         usuarioJSON.put("nombre", cliente.getNombre());
         usuarioJSON.put("telefono", cliente.getTelefono());
         usuarioJSON.put("id", cliente.getId());
@@ -146,7 +146,7 @@ public class PersistenciaUsuarios {
 
     }
 
-    public void guardarPropietario(Propietario propietario, JSONObject usuarioJSON){
+    public static void guardarPropietario(Propietario propietario, JSONObject usuarioJSON){
         JSONArray misPiezasActuales = new JSONArray();
         JSONArray misPiezasPasadas = new JSONArray();
 
