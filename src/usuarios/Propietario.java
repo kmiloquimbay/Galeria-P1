@@ -14,9 +14,6 @@ public class Propietario extends Cliente{
         misPiezasPasadas = new LinkedList<Pieza>( );
 
     }
-    public void agregarEmpleado(){
-        // Agrega un empleado
-    }
 
     public List<Pieza> getMisPiezasActuales(){
         return misPiezasActuales;

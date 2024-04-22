@@ -27,8 +27,7 @@ public class GaleriaConsole {
                 case 1:
                     Galeria galeria = PersistenciaGaleria.cargarGaleria();
                 case 2:
-                    Galeria galeriaASalvar;
-                    PersistenciaGaleria.salvarGaleria(galeriaASalvar);
+                    ConsolaUsuarios.salvar();
                     break;
                 case 3:
                     ingresarComoUsuario(scanner);

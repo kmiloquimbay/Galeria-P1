@@ -13,6 +13,7 @@ import galeria.inventarioYpiezas.Inventario;
 import galeria.inventarioYpiezas.Pieza;
 import galeria.inventarioYpiezas.Pintura;
 import galeria.inventarioYpiezas.Video;
+import persistencia.PersistenciaGaleria;
 import usuarios.AdministradorGaleria;
 import usuarios.Cajero;
 import usuarios.Comprador;
@@ -419,5 +420,10 @@ public class ConsolaUsuarios {
             System.out.println(pieza.getTitulo());
             
         }
+    }
+
+    public static void salvar() {
+        setUp();
+        PersistenciaGaleria.salvarGaleria(galeriaConsola);
     }
 }
