@@ -174,24 +174,30 @@ public class PersistenciaUsuarios {
         JSONObject administrador = raiz.getJSONObject("administrador");
 
         AdministradorGaleria administradorGaleria = cargarAdministrador(administrador, galeria);
-        galeria.setAdministrador(administradorGaleria);
+        galeria.setAdministradorGaleria(administradorGaleria);
 
         for (int i = 0; i < empleados.length(); i++) {
-            JSONObject empleado = empleados.getJSONObject(i);
-            cargarEmpleado(empleado, galeria);
+            JSONObject jEmpleado = empleados.getJSONObject(i);
+            Empleado empleado = cargarEmpleado(jEmpleado, galeria);
+            controladorUsuarios.agregarEmpleado(empleado);
 
         }
 
         for (int i = 0; i < compradores.length(); i++) {
-            JSONObject comprador = compradores.getJSONObject(i);
-            cargarComprador(comprador);
+            JSONObject jComprador = compradores.getJSONObject(i);
+            Comprador comprador = cargarComprador(jComprador);
+            controladorUsuarios.agregarComprador(comprador);
         }
 
         for (int i = 0; i < propietarios.length(); i++) {
-            JSONObject propietario = propietarios.getJSONObject(i);
-            cargarPropietario(propietario);
+            JSONObject jPropietario = propietarios.getJSONObject(i);
+            Propietario propietario = cargarPropietario(jPropietario);
+            controladorUsuarios.agregarPropietario(propietario);
         }
         
+        galeria.setControladorUsuarios(controladorUsuarios);
+
+        return galeria;
     }
 
     public AdministradorGaleria cargarAdministrador(JSONObject administrador, Galeria galeria){
@@ -225,17 +231,17 @@ public class PersistenciaUsuarios {
         String telefono = jCliente.getString("telefono");
         String id = jCliente.getString("id");
 
-        Cliente cliente;
         if (jCliente.getString("tipoCliente").equals("comprador")){
-            cargarComprador(jCliente, cliente, login, password, nombre, telefono, id);
+            Comprador cliente = cargarComprador(jCliente, cliente, login, password, nombre, telefono, id);
+            return cliente;
         }
         else if (jCliente.getString("tipoCliente").equals("propietario")){
-            cargarPropietario(jCliente, cliente, login, password, nombre, telefono, id);
+            Propietario cliente = cargarPropietario(jCliente, cliente, login, password, nombre, telefono, id);
+            return cliente;
         }
-        return cliente;
     }
 
-    public void cargarComprador(JSONObject jCliente, Cliente comprador, String login, String password, String nombre, String telefono, String id){
+    public Comprador cargarComprador(JSONObject jCliente, Comprador comprador, String login, String password, String nombre, String telefono, String id){
         int limiteCompras = jCliente.getInt("limiteCompras");
         JSONArray jPiezasDisponibles = jCliente.getJSONArray("piezasDisponibles");
         JSONArray misCompras = jCliente.getJSONArray("misCompras");
@@ -252,11 +258,12 @@ public class PersistenciaUsuarios {
         }
 
         comprador = new Comprador(login, password, nombre, telefono, limiteCompras, piezasDisponibles, id);
+        return comprador;
 
         
     }
 
-    public void cargarPropietario(JSONObject jCliente, Cliente propietario, String login, String password, String nombre, String telefono, String id){
+    public Propietario cargarPropietario(JSONObject jCliente, Propietario propietario, String login, String password, String nombre, String telefono, String id){
         JSONArray jMisPiezasActuales = jCliente.getJSONArray("misPiezasActuales");
         JSONArray jMisPiezasPasadas = jCliente.getJSONArray("misPiezasPasadas");
 
@@ -273,6 +280,8 @@ public class PersistenciaUsuarios {
             JSONObject pieza = jMisPiezasPasadas.getJSONObject(i);
             propietario.agregarAPasadas(PersistenciaInventario.cargarPieza(pieza));
         }
+
+        return propietario;
     }
 
 }

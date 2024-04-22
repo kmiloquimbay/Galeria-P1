@@ -1,6 +1,8 @@
 package consola;
 
-    import java.util.Scanner;
+import java.util.Scanner;
+import persistencia.PersistenciaGaleria;
+import galeria.Galeria;
 
 public class GaleriaConsole {
 
@@ -23,12 +25,10 @@ public class GaleriaConsole {
 
             switch (opcionMenuPrincipal) {
                 case 1:
-                    // Lógica para cargar la galería
-                    System.out.println("Opción no implementada aún.");
-                    break;
+                    Galeria galeria = PersistenciaGaleria.cargarGaleria();
                 case 2:
-                    // Lógica para salvar la galería
-                    System.out.println("Opción no implementada aún.");
+                    Galeria galeriaASalvar;
+                    PersistenciaGaleria.salvarGaleria(galeriaASalvar);
                     break;
                 case 3:
                     ingresarComoUsuario(scanner);
