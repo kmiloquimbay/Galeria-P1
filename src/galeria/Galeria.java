@@ -50,8 +50,16 @@ public class Galeria {
         return subastas;
     }
 
+    public void setSubastas(Map<String, Subasta> subastas) {
+        this.subastas = subastas;
+    }
+
     public Map<String, Compra> getCompras() {
         return compras;
+    }
+
+    public void setCompras(Map<String, Compra> compras) {
+        this.compras = compras;
     }
 
     public void agregarSubasta(Subasta subasta){
