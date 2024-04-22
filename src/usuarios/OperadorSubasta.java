@@ -14,6 +14,7 @@ public class OperadorSubasta extends Empleado{
     public String terminarSubasta(String id){
         // Termina la subasta
         Subasta subastaTerminar= galeria.encontrarSubasta(id);
+        // usar metodo registrar pago en clase cajero
         return subastaTerminar.terminarSubasta();
     }
     public String recibirRegistrarOferta(Oferta oferta,String id ){ 
