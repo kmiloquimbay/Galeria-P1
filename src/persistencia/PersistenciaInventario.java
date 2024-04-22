@@ -4,12 +4,11 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import galeria.inventarioYpiezas.*;
 
 import java.util.List;
-
 public class PersistenciaInventario {
     
     public static void guardarInventario(Inventario inventario) {
