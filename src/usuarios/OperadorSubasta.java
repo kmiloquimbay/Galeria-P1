@@ -17,6 +17,10 @@ public class OperadorSubasta extends Empleado{
         return subastaTerminar.terminarSubasta();
     }
     public String recibirRegistrarOferta(Oferta oferta,String id ){ 
+        //verificar comprador
+        if (this.galeria.getControladorUsuarios().obtenerComprador(oferta.getComprador().getId())==null){
+            return "El comprador no existe";
+        }
         Subasta subasta= galeria.encontrarSubasta(id);
         return subasta.recibirRegistrarOferta(oferta);
     }
