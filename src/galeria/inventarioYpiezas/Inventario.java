@@ -20,32 +20,16 @@ public class Inventario {
         return piezasEnExhibicion;
     }
 
-    public void setPiezasEnExhibicion(List<Pieza> piezasEnExhibicion) {
-        this.piezasEnExhibicion = piezasEnExhibicion;
-    }
-
     public List<Pieza> getPiezasEnBodega() {
         return piezasEnBodega;
-    }
-
-    public void setPiezasEnBodega(List<Pieza> piezasEnBodega) {
-        this.piezasEnBodega = piezasEnBodega;
     }
 
     public List<Pieza> getPiezasPasadas() {
         return piezasPasadas;
     }
 
-    public void setPiezasPasadas(List<Pieza> piezasPasadas) {
-        this.piezasPasadas = piezasPasadas;
-    }
-
     public List<Pieza> getPiezasDisponibleVenta() {
         return piezasDisponibleVenta;
-    }
-
-    public void setPiezasDisponibleVenta(List<Pieza> piezasDisponibleVenta) {
-        this.piezasDisponibleVenta = piezasDisponibleVenta;
     }
 
     public void guardarEnBodega(Pieza pieza){
