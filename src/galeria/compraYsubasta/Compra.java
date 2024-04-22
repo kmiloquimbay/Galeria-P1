@@ -44,7 +44,7 @@ public class Compra {
     }
 
     public boolean verificarVentaValorFijo(Pieza pieza, int valorPagado){
-        if( valorPagado > pieza.getPrecioFijo() && pieza.isDisponibleVentaValorFijo() && !pieza.isBloqueada()){
+        if( valorPagado >= pieza.getPrecioFijo() && pieza.isDisponibleVentaValorFijo() && !pieza.isBloqueada()){
             return true;
         }
         return false;
