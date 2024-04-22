@@ -33,6 +33,10 @@ public class Subasta {
         return ofertas;
     }
 
+    public Pieza getPieza() {
+        return pieza;
+    }
+
     public void agregarOferta(Oferta oferta) {
         ofertas.add(oferta);
     }

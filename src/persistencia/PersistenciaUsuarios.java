@@ -122,7 +122,7 @@ public class PersistenciaUsuarios {
         }
     }
 
-    public void guardarComprador(Comprador comprador, JSONObject usuarioJSON){
+    public static void guardarComprador(Comprador comprador, JSONObject usuarioJSON){
         usuarioJSON.put("limiteCompras", comprador.getLimiteCompras());
         JSONArray piezasDisponibles = new JSONArray();
         JSONArray misCompras = new JSONArray();
