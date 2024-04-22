@@ -25,11 +25,5 @@ public class OperadorSubasta extends Empleado{
         Subasta subasta= galeria.encontrarSubasta(id);
         return subasta.evaluarOferta(oferta);
     }
-    public void terminarSubastas(){
-        // Termina todas las subastas
-        for (Subasta subasta : galeria.getSubastas().values()) {
-            subasta.terminarSubasta();
-        }
-    }
 
 }
