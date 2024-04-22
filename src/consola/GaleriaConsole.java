@@ -26,6 +26,7 @@ public class GaleriaConsole {
             switch (opcionMenuPrincipal) {
                 case 1:
                     Galeria galeria = PersistenciaGaleria.cargarGaleria();
+                    System.out.println("Se ha cargado la galeria: "+galeria.equals(galeria));
                 case 2:
                     ConsolaUsuarios.salvar();
                     break;
