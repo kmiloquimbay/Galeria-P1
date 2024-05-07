@@ -219,14 +219,19 @@ public class PersistenciaUsuarios {
 
         Empleado rta = null;
 
-        if (rol.equals("operador")){
+        if (rol.equals("Operador")){
             rta = new OperadorSubasta(login, password, rol, galeria, id);
         }
-        else if (rol.equals("cajero")){
+        else if (rol.equals("Cajero")){
             rta = new Cajero(login, password, rol, galeria, id);
-        } else if (rol.equals("administrador")){
+        } else if (rol.equals("Administrador")){
             rta = new AdministradorGaleria(login, password, rol, galeria, id);
         }
+            else {
+                // Handle unknown role
+                throw new IllegalArgumentException("Unknown role: " + rol);
+            }
+        
 
         return rta;
 
@@ -272,13 +277,14 @@ public class PersistenciaUsuarios {
         Propietario propietario = new Propietario(login, password, nombre, telefono, id);
 
         for (int i = 0; i < jMisPiezasActuales.length(); i++) {
-            JSONObject pieza = jMisPiezasActuales.getJSONObject(i);
-            propietario.agregarPieza(galeria.getInventario().buscarPieza(pieza.getString("titulo")));
+
+            String pieza = jMisPiezasActuales.getString(i);
+            propietario.agregarPieza(galeria.getInventario().buscarPieza(pieza));
         }
 
         for (int i = 0; i < jMisPiezasPasadas.length(); i++) {
-            JSONObject pieza = jMisPiezasPasadas.getJSONObject(i);
-            propietario.agregarAPasadas(galeria.getInventario().buscarPieza(pieza.getString("titulo")));
+            String pieza = jMisPiezasPasadas.getString(i);
+            propietario.agregarAPasadas(galeria.getInventario().buscarPieza(pieza));
         }
 
         return propietario;

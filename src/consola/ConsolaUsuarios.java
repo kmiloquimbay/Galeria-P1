@@ -38,7 +38,7 @@ public class ConsolaUsuarios {
     //Usuarios
     public static Comprador comprador= new Comprador("LuisP", "12345", "Luis","3456289290", 1000000,galeriaConsola.getInventario().getPiezasDisponibleVenta(), "547293");
     public static Propietario propietario= new Propietario("santiH", "63248", "Santiago", "456783672","547902");
-    public static AdministradorGaleria admin= new AdministradorGaleria("fabio24", "1226745", "Admin",galeriaConsola, "562901");
+    public static AdministradorGaleria admin= new AdministradorGaleria("fabio24", "1226745", "Administrador",galeriaConsola, "562901");
     public static Cajero cajero= new  Cajero("juanito2", "762598", "Cajero",galeriaConsola, "4439035");
     public static OperadorSubasta operador= new OperadorSubasta("andresP", "12235345", "Operador",galeriaConsola, "653907");
 

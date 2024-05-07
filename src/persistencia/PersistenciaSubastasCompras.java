@@ -115,7 +115,7 @@ public class PersistenciaSubastasCompras {
 
         for (int j = 0; j < ofertas.length(); j++) {
             JSONObject jOferta = ofertas.getJSONObject(j);
-            Comprador comprador = new Comprador("", "", jOferta.getString("compradorId"), "", 0, null, "");
+            Comprador comprador = new Comprador("", "", jOferta.getString("comprador"), "", 0, null, "");
             Oferta oferta = new Oferta(jOferta.getInt("valorOferta"), comprador);
             sub.agregarOferta(oferta);
         }

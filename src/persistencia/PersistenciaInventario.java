@@ -16,7 +16,7 @@ import java.util.List;
 public class PersistenciaInventario {
     
     public static void guardarInventario(Inventario inventario) throws FileNotFoundException {
-
+    	
         JSONObject inventarioJson = new JSONObject();
 
         JSONArray piezasEnBodega = new JSONArray();
@@ -71,6 +71,7 @@ public class PersistenciaInventario {
             JSONObject autorJson = guardarAutor(autor);
             autores.put(autorJson);
         }
+        piezaJson.put("autores", autores);
         piezaJson.put("tipoPieza", pieza.getTipoPieza());
 
         if (pieza.getTipoPieza().equals("Pintura")) {
