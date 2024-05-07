@@ -12,7 +12,6 @@ import usuarios.Usuario;
 import galeria.compraYsubasta.Compra;
 import galeria.inventarioYpiezas.Pieza;
 
-import java.util.List;
 import java.util.ArrayList;
 
 import java.io.File;

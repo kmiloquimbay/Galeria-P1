@@ -2,7 +2,6 @@ package persistencia;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Map;
 
 import galeria.Galeria;
 import galeria.inventarioYpiezas.Inventario;

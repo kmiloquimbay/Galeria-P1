@@ -5,10 +5,8 @@ import org.json.JSONObject;
 
 import java.io.PrintWriter;
 import java.nio.file.Files;
-import java.util.HashMap;
 import java.util.Map;
 
-import galeria.inventarioYpiezas.Pieza;
 import usuarios.Comprador;
 
 import java.io.File;
@@ -87,7 +85,6 @@ public class PersistenciaSubastasCompras {
 
     public static void cargarComprasSubastas(Galeria galeria) throws IOException {
 
-        Map<String, Subasta> subastas = new HashMap<>();
         String jsonCompleto = new String(Files.readAllBytes(new File("comprasSubastas.json").toPath()));
         JSONObject raiz = new JSONObject(jsonCompleto);
 
