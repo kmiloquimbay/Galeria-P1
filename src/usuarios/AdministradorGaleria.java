@@ -93,6 +93,8 @@ public class AdministradorGaleria extends Empleado{
     public void desbloquearPieza(String titulo){
         this.galeria.getInventario().desbloquearPieza(titulo);
     }
-    
+    public void setGaleria(Galeria galeria){
+        this.galeria=galeria;
+    }
 
 }

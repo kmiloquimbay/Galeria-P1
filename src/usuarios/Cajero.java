@@ -39,4 +39,8 @@ public class Cajero extends Empleado{
        
     }
     
+
+    public void setGaleria(Galeria galeria) {
+        this.galeria = galeria;
+    }
 }

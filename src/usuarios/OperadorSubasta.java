@@ -31,4 +31,8 @@ public class OperadorSubasta extends Empleado{
         return subasta.evaluarOferta(oferta);
     }
 
+    public void setGaleria(Galeria galeria) {
+        this.galeria = galeria;
+    }
+
 }

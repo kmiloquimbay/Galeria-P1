@@ -29,12 +29,25 @@ public class Subasta {
     public boolean esVendida() {
         return vendida;
     }
+    
+    public int getValorMinimo() {
+    	return valorMinimo;
+    }
+    
     public List<Oferta> getOfertas() {
         return ofertas;
     }
 
     public Pieza getPieza() {
         return pieza;
+    }
+
+    public int getValorInicial() {
+        return valorInicial;
+    }
+
+    public void setVendida(boolean vendida) {
+        this.vendida = vendida;
     }
 
     public void agregarOferta(Oferta oferta) {
